@@ -9,6 +9,8 @@ Here you find the recent downloads of my projects.
 - [PwrMtr v4.0.3.0 for WROVER (4 or 8Mb)](https://sim0njo.github.io/install/e32PwrMtr4Mb/pwrmtr-4mb-v4.0.3.0.bin)
 
 ##Windows
+- [MQTT Client application](https://sim0njo.github.io/install/Windows/xMqttcd.exe): Allows you to publish MQTT messages or to subscribe to a topic and report incoming published messages.
+- [Syslog Daemon application](https://sim0njo.github.io/install/Windows/xSyslog.exe): Simple syslog daemon that listens on a UDP socket and displays in console or stores in logfile.
 
 ##Linux
 
