@@ -60,7 +60,7 @@ nav:
     - User Manual: Phc2Mqtt.md
     - Phc Modules: PhcModules.md
     - Simple Rule Server: SimpleRuleServer.md
-    - Upgrading.md
+#   - Upgrading.md
 #  - Windows&Linux Projects:
 #    - MQTT Client: Upgrading.md
 #    - MQTT Server: Upgrading.md
