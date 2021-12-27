@@ -67,7 +67,7 @@ that needed fixing, and this resulted in a PCB v1.3. The different hardware vers
 
 ###Version 1.2
 
-<img style="float:right;width:254px;height:440px" src="../img/pcb-v1.2.jpg"></img>
+<img style="float:right;width:254px;height:440px" src="../img/p2m-pcb-v1.2.jpg"></img>
 To the right is the layout of the module PCB, it fits in a 3MOD DIN-rail housing, relevant items are:  
 
 - CN1/CN2 are the PHC module bus connectors  
@@ -100,7 +100,7 @@ The PUI is plugged onto 2 raising connectors and carries the red and blue LED's,
 
 It still fits in a 3MOD DIN-rail housing. If the housing has a red transparent top cover then it is better to remove it as this blocks blue light.
 
-<img style="float:right;width:226px;height:580px" src="../img/pcb-v1.3.jpg"></img>
+<img style="float:right;width:226px;height:580px" src="../img/p2m-pcb-v1.3.jpg"></img>
 **Main PCB**  
 
 - BUS1/BUS2 are the PHC module bus connectors  
@@ -146,7 +146,7 @@ In case of the older STMv1/v2 you also need an IP-2-RS232 convertor like MOXA NP
 In case of the STMv3 you can directly use it&#39;s network connection.
 
 <div style="display:flex;align-items:center;justify-content:center;">
-<img src="../img/e2e-proxy.jpg" width="457" height="365"></td>
+<img src="../img/p2m-e2e-proxy.jpg" width="457" height="365"></td>
 </div>
 
 ###PassiveSTMv3 mode
@@ -166,7 +166,7 @@ The reason why we call this PassiveSTMv3 mode is because the module does not han
 Opposed to a real STM that will lookup the event in the internal program memory and execute the commands linked to the event.
 
 <p align="center">
-<img src="../img/e2e-passive.jpg" width="457" height="365"></td>
+<img src="../img/p2m-e2e-passive.jpg" width="457" height="365"></td>
 </p>
 
 ##First usage of the module
@@ -231,7 +231,7 @@ Then plug a new 6-wire cable with 2 RJ11 connectors in <b>CN2/BUS2</b> of the mo
 - Make some space and place the module onto the DIN rail such that it is mechanically stable.
 
 <div style="display:flex;align-items:center;justify-content:center;">
-<img src="../img/setup-proxy.jpg" width="557" height="464"></td>
+<img src="../img/p2m-setup-proxy.jpg" width="557" height="464"></td>
 </div>
 
 - If you intend to run in <b>PassiveSTMv3</b> mode, then remove the real STM from your system and connect the module with the existing 6-wire cables.
@@ -239,7 +239,7 @@ Then plug a new 6-wire cable with 2 RJ11 connectors in <b>CN2/BUS2</b> of the mo
 - Place the module onto the free space on the DIN rail such that it is mechanically stable.
 
 <div style="display:flex;align-items:center;justify-content:center;">
-<img src="../img/setup-passive.jpg" width="557" height="464"></td>
+<img src="../img/p2m-setup-passive.jpg" width="557" height="464"></td>
 </div>
 
 - Power on the module and your PHC system.
@@ -254,7 +254,7 @@ Configuration and management of the module can be done via a web interface by en
 
 ###Main Menu
 
-<img style="float:right;width:352px;height:294px" src="../img/main-menu.jpg"></img>
+<img style="float:right;width:352px;height:294px" src="../img/p2m-main-menu.jpg"></img>
 
 The homepage of the module is the main menu as shown on the right.
 
@@ -270,7 +270,7 @@ Click on a button to enter the related page.
 
 ###Configuration
 
-<img style="float:right;width:352px;height:430px" src="../img/config.jpg"></img>
+<img style="float:right;width:352px;height:430px" src="../img/p2m-config.jpg"></img>
 
 Click on a button to enter the related configuration page.
 
@@ -290,7 +290,7 @@ Click on a button to enter the related configuration page.
 
 ###Configure Wifi
 
-<img style="float:right;width:352px;height:304px" src="../img/config-wifi.jpg"></img>
+<img style="float:right;width:352px;height:304px" src="../img/p2m-config-wifi.jpg"></img>
 
 - **Remote AP SSID** (network name) and **Remote AP Password**: The module will use these credentials to connect in STA-mode to the Wifi network.
 When you leave these fields empty, the module will boot into AP-mode.  
@@ -328,7 +328,7 @@ When the MQTT client receives published messages, it will offer them to the diff
 it is upto them to determine whether to use the message or not.
 &nbsp;
 
-<img style="float:right;width:352px;height:568px" src="../img/config-mqtt-client.jpg"></img>
+<img style="float:right;width:352px;height:568px" src="../img/p2m-config-mqtc.jpg"></img>
 - <b>Broker IP Address</b> and <b>Broker IP Port</b>: Enter the MQTT Broker IP address and port (default 1883), these fields are mandatory.  
 - <b>ClientId</b>: A unique name across all clients that connect to the same broker, maximum 24 characters, mandatory.
 
@@ -355,7 +355,7 @@ Some of them generate serious overhead so they must remain inactive as much as p
 
 To provide the usable and necessary feedback to the user we suggest below settings:
 
-<img style="float:right;width:352px;height:408px" src="../img/config-logr.jpg"></img>
+<img style="float:right;width:352px;height:408px" src="../img/p2m-config-logr.jpg"></img>
 - <b>Serial Loglevel</b>: Set to '0 None' for normal operation, serial logging is sent over the USB connection of the ESP32 DevkitC.  
 - <b>Web Loglevel</b>: Should be set to '2 Info' for normal operation,
 this logging can be observed in the [Web Console](#web-console).  
@@ -372,7 +372,7 @@ after reading it you will know that SRSD needs events to trigger rules that lead
 - MQTT events: can be initiated by publishing messages to any of below <b>RX Topic Prefixes</b>  
 - STMD events: can be initiated by enabling them in <b>Configure STM Reporting</b>, see chapter 6.8.
 
-<img style="float:right;width:352px;height:584px" src="../img/config-srsd.jpg"></img>
+<img style="float:right;width:352px;height:584px" src="../img/p2m-config-srsd.jpg"></img>
 - <b>RX Topic Prefixes</b>: Enter upto 4 topic prefixes of max 24 characters. On startup SRSD will subscribe to each '&lt;rx-topic-prefix>/#'
 to receive messages from the MQTT broker. When SRSD stops it will unsubscribe from each '&lt;rx-topic-prefix>/#'.  
 - <b>Admin State</b>: Allows you to enable or disable the SRS daemon.  
@@ -415,7 +415,7 @@ enter the module's IP address, press TAB and you should notice that version 3.30
 
 Goto the transfer window of the Systemsoftware and press <b>Start</b>, the project data will be transfered to the module, you can observe this in the <b>Web Console</b>.
 
-<img style="float:right;width:352px;height:616px" src="../img/config-stmd.jpg"></img>
+<img style="float:right;width:352px;height:616px" src="../img/p2m-config-stmd.jpg"></img>
 - <b>Operating Mode</b>:
 
 'Proxy': The STMD analyzes packets on the PHC module bus and reports events/status via the MQTT client,
@@ -463,7 +463,7 @@ to build the module-list.
 The STMD reporting sub-system is the one looking at all the packets that are sent over the PHC module bus it is attached to,
 and which reports them in readable format based on the module-list.
 
-<img style="float:right;width:352px;height:328px" src="../img/config-repd.jpg"></img>
+<img style="float:right;width:352px;height:328px" src="../img/p2m-config-repd.jpg"></img>
 - <b>Format</b>: The reporting format, see below.  
 - <b>Report To MQTT</b>: Enable/disable reporting via the MQTT client on a per type basis
 (boo=boot, evt=event, sta=state, cmd=command).
@@ -539,7 +539,7 @@ of the STMv1/v2 up to your WLAN network.
 <b>PassiveSTMv3 mode</b>: The commands will be sent directly to the PHC module bus without the need for extra hardware, 
 you can disable the PHC external client.
 
-<img style="float:right;width:352px;height:400px" src="../img/config-extc.jpg"></img>
+<img style="float:right;width:352px;height:400px" src="../img/p2m-config-extc.jpg"></img>
 - <b>Remote STM Mode</b>: Select the appropriate remote STM in your PHC system.  
 - <b>Remote STM IP Address</b> and <b>Port</b>: IP address and port on which the remote STM in your PHC system is reachable.
 
@@ -564,12 +564,12 @@ These commands can be executed by publishing an MQTT message to topic '<rx-topic
 These commands can also be executed by entering them in the Web Console command line.
 
 <p align="center">
-<img src="../img/ccmd-ref.jpg" width="980" height="610"></td>
+<img src="../img/p2m-ccmd-ref.jpg" width="980" height="610"></td>
 </p>
 
 
 ###File Maintenance
-<img style="float:right;width:352px;height:320px" src="../img/file-maintenance.jpg"></img>
+<img style="float:right;width:352px;height:320px" src="../img/p2m-file-maint.jpg"></img>
 In this menu you can download or clear/delete files:  
 - <b>Download File</b>: Select the desired file in the dropdown list, then click <b>Download File</b> to start download to your PC.  
 - <b>Clear File</b>: Select the desired file in the dropdown list, then click <b>Clear File</b>. You will be prompted to confirm the clear action.
@@ -581,7 +581,7 @@ In this menu you can download or clear/delete files:
 
 
 ###Firmware Upgrade
-<img style="float:right;width:352px;height:208px" src="../img/fwupgrade.jpg"></img>
+<img style="float:right;width:352px;height:208px" src="../img/p2m-fw-upgrade.jpg"></img>
 The module supports OTA (over-the-air) firmware upgrades, this means that you can upload a new firmware file via a webpage,
 after which the module will execute the new firmware when it boots.
 
@@ -602,7 +602,7 @@ The smaller window near the bottom is the command-line, you can enter commands h
 enter the commands as listed in [PHC Cmd Reference](#phc-cmd-reference).
 
 <p align="center">
-<img src="../img/webconsole.jpg" width="980" height="600"></td>
+<img src="../img/p2m-web-console.jpg" width="980" height="600"></td>
 </p>
 
 
