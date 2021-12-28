@@ -4,12 +4,12 @@ description: P2M Gerbers
 
 ##Producing PCB's
 Below ZIP archive contains all gerber files needed to produce the printed circuit boards (PCB) at most Asian manufacturers:  
-- [JLCPCB}()
-- [Seeed Studio]()
+- [JLCPCB](https://jlcpcb.com/)  
+- [Seeed Studio](https://www.seeedstudio.com/fusion_pcb.html)
 
 Simply go to their website and look for the order menu.
 
-You will be presented with a webpage that allows you to upload the ZIP archive (upload gerber files). 
+You will be presented with a webpage that allows you to upload the ZIP archive (upload/add gerber files). 
 Once uploaded they will inspect it to be valid for production and offer you the chance to view it.
 
 After that choose the desired finish:  
