@@ -624,23 +624,23 @@ then  >stmd ccmd=jrm.5.out2.up.0.0.150;
 Using a Zigbee temperature/humidity sensor to drive a bathroom ventilator:
 ```
 ; initialise the fan state
-init  >state topic=bathroon/fan value=off;
+init  >state topic=bathroom/fan value=off;
 
-state <mqtt topic=tzb/tele/SENSOR data=bathroon/sensor prefix=bathroon/sensor keys=Temperature,Humidity;
+state <mqtt topic=tzb/tele/SENSOR data=bathroom/sensor prefix=bathroom/sensor keys=Temperature,Humidity;
 
 ; let new humidity reading trigger the rule
-when  <mqtt topic=tzb/tele/SENSOR data=bathroon/sensor&Humidity":
+when  <mqtt topic=tzb/tele/SENSOR data=bathroom/sensor&Humidity":
 
 ; when off, check for more than 75% humidity to turn fan on
-if    <state topic=bathroon/fan oper=eq value=off
-and   <state topic=bathroon/sensor/Humidity oper=gt value=75
-then  >state topic=bathroon/fan value=on
+if    <state topic=bathroom/fan oper=eq value=off
+and   <state topic=bathroom/sensor/Humidity oper=gt value=75
+then  >state topic=bathroom/fan value=on
 then  >stmd  ccmd=omd.2.out5.on
 
 ; when on, check for less than 70% humidity to turn fan off
-elif  <state topic=bathroon/fan oper=eq value=on
-and   <state topic=bathroon/sensor/Humidity oper=lt value=70
-then  >state topic=bathroon/fan value=off
+elif  <state topic=bathroom/fan oper=eq value=on
+and   <state topic=bathroom/sensor/Humidity oper=lt value=70
+then  >state topic=bathroom/fan value=off
 then  >stmd  ccmd=omd.2.out5.off;
 ```
 
