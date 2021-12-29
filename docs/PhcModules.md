@@ -72,17 +72,15 @@ Keywords and delimiters (between double quotes) are case-insensitive, actual dat
 
 ```
 config         ::= "<stmd>"
-                   *[<project> | <module> | <comment>]
+                   *[<module> | <comment>]
                    "</stmd>"
 
 comment        ::= ";" [<string>]
 
-project        ::= "project" "name="<string> ["author="<string>] ";"
-
-module         ::= "module" "id="<mod>.<address>
+module         ::= "module" "id="<phy-mod>.<address>
                      *("channel" <channel>) ";"
 
-  mod          ::= physical module name
+  phy-mod      ::= physical module name
   address      ::= 0-31
 
 channel        ::= "id="<id> "desc="<string> ["events="<event> *[","<event>]
