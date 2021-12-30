@@ -61,10 +61,24 @@ Output channels (mrk/led/out) can optionally specify following info:
 - Channel identification  
 - A description of this channel
 
-##Project Information Syntax
-Project info can span 1 or more lines but the last line always ends on a semicolon (;).
+##Configuration
+The module and optional channel/event list can be provided in several ways:
+- by uploading the project definition from the System Software v3 to Phc2Mqtt via the management interface
+- by extracting project.ppfx from the project.zpfx file and then uploading it manual
 
-Each line in project info carries 1 functional block as shown in the Backus-Naur format below, the split over lines is intentional and strict.
+In future we will obsolete both these methods and replace it with a full manual solution, this may sound strange but it will 
+allow for a lot of functionality on the module to be removed and a significant reduction is required memory (64Kb Flash + 64Kb RAM).
+
+To provide the manual configuration you will need to prepare a text file with below syntax and then upload it to Phc2Mqtt.
+To avoid typing errors we will make use of prepared template files per module type that can be copy/pasted with minor adjustements.
+
+For Proxy mode you need to copy the module definition, for PassiveSTMv3 mode you need to copy the module and channel definitions.
+
+
+###Configuration Syntax
+Configuration info can span 1 or more lines but the last line always ends on a semicolon (;).
+
+Each line in the configuration carries 1 functional block as shown in the Backus-Naur format below, the split over lines is intentional and strict.
 
 A space character is used to separate fields and can thus not be used as data.
 
@@ -92,12 +106,12 @@ channel        ::= "id="<id> "desc="<string> ["events="<event> *[","<event>]
 string         ::= *("a-z" | "A-Z" | "0-9" | "_-/.,"':;{}")
 ```
 
-##Module Templates
-Building the project info file from scratch is a difficult task, therefore we created templates for each physical module type.
+###Module Templates
+Building the configuration file from scratch is a difficult task, therefore we created templates for each physical module type.
 
 Below table lists all modules, their physical and logical module types, their image and manual and the corresponding template file.
 
-Copy the template for each module you have into your project.stm file and make adjustments:  
+Copy the template for each module you have into your config.stm file and make adjustments:  
 - adjust the <addr> of the module  
 - put all not used channels in comment  
 - optional adjust the desc field of each channel
@@ -159,16 +173,4 @@ Copy the template for each module you have into your project.stm file and make a
 | [DIM_UNI](phc/dim_uni.md) | dim | 949 DM UN | Universal dimmer | [<img style="float:right;width:100px;height:100px" src="../phc/DIM_UNI.PNG"></img>](../phc/DIM_UNI.pdf)
 | [DIM_DALI_8_EXT](phc/dim_dali_8_ext.md) | dal | 940/8 DALI-G | DALI-Gateway (8-channels) | [<img style="float:right;width:100px;height:100px" src="../phc/DIM_DALI_8_EXT.PNG"></img>](../phc/DIM_DALI_8.pdf)
 
-
-The module and optional channel/event list can be provided in several ways:
-- by uploading the project definition from the System Software v3 to Phc2Mqtt via the management interface
-- by extracting project.ppfx from the project.zpfx file and then uploading it manual
-
-In future we will obsolete both these methods and replace it with a full manual solution, this may sound strange but it will 
-allow for a lot of functionality on the module to be removed and a significant reduction is required memory (64Kb Flash + 64Kb RAM).
-
-To provide the manual configuration you will need to prepare a text file with below syntax and then upload it to Phc2Mqtt.
-To avoid typing errors we will make use of prepared template files per module type that can be copy/pasted with minor adjustements.
-
-For Proxy mode you need to copy the module definition, for PassiveSTMv3 mode you need to copy the module and channel definitions.
 
