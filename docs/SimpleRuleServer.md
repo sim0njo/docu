@@ -153,10 +153,12 @@ It will generate following predefined events:
 ```
 when <system topic=appl data=halting        ; module is going to halt
 when <system topic=appl data=rebooting      ; module is going to reboot
+when <system topic=mqtc data=connected      ; MQTT client connected to broker
+when <system topic=mqtc data=disconnected   ; MQTT client disconnected from broker
 when <system topic=stmd data=started        ; STM daemon started
 when <system topic=stmd data=stopped        ; STM daemon stopped
-when <system topic=mqtt data=connected      ; MQTT client connected to broker
-when <system topic=mqtt data=disconnected   ; MQTT client disconnected from broker
+when <system topic=wifi data=connected      ; Wifi client connected to AP
+when <system topic=wifi data=disconnected   ; Wifi client disconnected from AP
 ```
 The reason of existence for the system events comes from the startup order of the module's sub-systems. 
 By default the SRSD will be started early during module boot. 
@@ -460,7 +462,7 @@ This is a complex operation because the event topic/data are highly variable wit
 
 ####etopic
 An event with a full topic typically has flat data associated with it, 
-to handle this we define a state rule with &lt;modifier>=etopic and no <b>keys</b> parameter.
+to handle this we define a state rule with a &lt;topic-filter> and &lt;modifier>=etopic but without &lt;data-filter> or &lt;keys> parameters.
 
 The resulting state object's topic will be equal to the event's topic, and a value equal to the event's data.
 This rule format covers the xPhcLogd compatible STMD reporting format.
