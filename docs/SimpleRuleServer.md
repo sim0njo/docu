@@ -323,10 +323,10 @@ If the topic-filter and optional data-filter match then the rule will be execute
 
 #### Topic-filters
 Are used to match the event topic and support wildcard characters:  
-- A question-mark (**?**) means that the character in that position can be any character  
-- A hashtag (**#**) means one or more numeric digits match  
-- An asterisk (**\***) means all following characters are a match  
-- All other characters (**0-9**,**a-z**,**A-Z**, **_-.;**) require a 1-on-1 case-sensitive match
+- A question-mark (<b>?</b>) means that the character in that position can be any character  
+- A hashtag (<b>#</b>) means one or more numeric digits match  
+- An asterisk (<b>*</b>) means all following characters are a match  
+- All other characters (<b>0-9</b>,<b>a-z</b>,<b>A-Z</b>, <b>_-.;</b>) require a 1-on-1 case-sensitive match
 
 #### Data-filters
 Are used to match the event data and are composed from OR- and AND-patterns:  
@@ -334,7 +334,7 @@ Are used to match the event data and are composed from OR- and AND-patterns:
 - You can specify multiple AND-patterns combined in an OR-pattern, as soon as one AND-pattern matches, the data-filter matches
 
 ####Key-filters
-Are used in state-rules to extract key:value pairs from the event data and support wildcard characters:  
+Are used in state-rules to extract key:value pairs from text/JSON event data and support wildcard characters:  
 - A <b>?</b> means that the character in that position can be any character  
 - A <b>#</b> means one or more numeric digits match  
 - An <b>*</b> means all following characters are a match  
