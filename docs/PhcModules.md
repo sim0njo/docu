@@ -59,11 +59,11 @@ The additional information for each input (in/ir/il/im) and feedback (fb) channe
 
 Output channels (mrk/led/out) can optionally specify following info:  
 - Channel identification  
-- A description of this channel
+- Optional a descriptive text for this channel  
 
 ##Configuration
-The module and optional channel/event list can be provided in several ways:
-- by uploading the project definition from the System Software v3 to Phc2Mqtt via the management interface
+The module and optional channel/event list can be provided in several ways:  
+- by uploading the project definition from the System Software v3 to Phc2Mqtt via the management interface  
 - by extracting project.ppfx from the project.zpfx file and then uploading it manual
 
 In future we will obsolete both these methods and replace it with a full manual solution, this may sound strange but it will 
@@ -81,6 +81,8 @@ Configuration info can span 1 or more lines but the last line always ends on a s
 Each line in the configuration carries 1 functional block as shown in the Backus-Naur format below, the split over lines is intentional and strict.
 
 A space character is used to separate fields and can thus not be used as data.
+
+If you want to use a space character in a string, then the complete string needs to be enclosed in double quotes.
 
 Keywords and delimiters (between double quotes) are case-insensitive, actual data strings are case-sensitive.
 
