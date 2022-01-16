@@ -60,7 +60,7 @@ nav:
     - User Manual: Phc2Mqtt.md
     - Phc Modules: PhcModules.md
     - Simple Rule Server: SimpleRuleServer.md
-    - PCB Production Info: P2mGerbers.md
+#   - PCB Production Info: P2mGerbers.md
 #   - Upgrading.md
 #  - Windows&Linux Projects:
 #    - MQTT Client: Upgrading.md
