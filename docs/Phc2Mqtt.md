@@ -63,7 +63,8 @@ events and which can execute one or more actions. See [Simple Rule Server](/phc2
 
 ## Hardware
 The initial version of the module PCB was v1.2. Feedback from testers showed some issues in the design
-that needed fixing, and this resulted in a PCB v1.3. The different hardware versions will be explained here.
+that needed fixing, and this resulted in a PCB v1.3. A further evolution is PCB v2.0. 
+The different hardware versions will be explained here.
 
 ###Version 1.2
 
@@ -125,6 +126,37 @@ It still fits in a 3MOD DIN-rail housing. If the housing has a red transparent t
 !!! warning 
     The module is configured by default to power from the internal power supply, 
     if you want to power it via USB you need to remove the cap from the PWR connector first (top/center on main PCB).
+
+###Version 2.0
+This version has a single mainboard that contains the ESP32-DevkitC, it's form maximalizes the board space available
+while still fitting in a custom 3D printed 2MOD DIN-rail housing.
+
+It draws power from the PHC power supply by means of a DC/DC convertor and the RTC (realtime clock) is powered by a CR1220 replacable battery. 
+
+<img style="float:right;width:290px;height:450px" src="../img/p2m-pcb-v2.0.jpg"></img>
+
+- BUS1/BUS2 are the PHC module bus connectors  
+- 2-pin header at top/center labeled 'PWR'  
+- 2-pin header at top/center labeled 'SPLIT'  
+- U1 is the ESP32-DevkitC dual core CPU module  
+- U3 is the DC/DC convertor power supply  
+- U4 is the RTC with replacable battery (B1)  
+- Multicolor red/blue LED on the right  
+- Pushbutton on the right labeled 'WIFI'  
+- Pushbutton on the right labeled 'EN'  
+&nbsp;  
+&nbsp;  
+&nbsp;  
+&nbsp;  
+&nbsp;  
+&nbsp;  
+!!! warning 
+    The module is configured by default to power from the PHC module bus, 
+    if you want to power it via USB you need to remove the cap from the PWR connector first (top/center on PCB).
+
+!!! warning 
+    The module is configured by default to connect the 24V of both BUS1/BUS2 connectors by means of the SPLIT connector,
+    if needed you can remove the cap from the connector to create 2 separate 24V segments.
 
 
 ##Operating modes
@@ -202,7 +234,22 @@ the Internet by means of SNTP or read it from the RTC module if one is installed
 
 - If your module has the optional OLED display, then press button <b>B1</b> or <b>B2</b> to display the module's IP address.
 
-- If you don't have the OLED display, we suggest you log on to your Wifi router to consult the list of connected clients.
+- If you don't have the OLED display, you can press the <b>WIFI</b> button. Now the last number of the IP address (192.168.0.x) will be
+reported by means of the red and blue leds as follows:
+```
+example : IP-address = 192.168.0.125
+
+           on ----      ----        ----
+blue LED: off     ------    --------    -----------------
+
+           on         -         - -         - - - - -
+red LED : off -------- --------- - --------- - - - - ----
+
+each -  : 1/4 second
+```
+
+
+- You can also you log on to your Wifi router to consult the list of connected clients.
 Look for an entry showing 'Espressif', enter the shown IP address in a web browser, you should see the [main menu](#main-menu) webpage.
 
 - As above IP address is obtained via DHCP from your Wifi network, it may be different each time the module reboots.
