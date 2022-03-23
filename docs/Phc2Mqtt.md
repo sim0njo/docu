@@ -235,7 +235,8 @@ the Internet by means of SNTP or read it from the RTC module if one is installed
 - If your module has the optional OLED display, then press button <b>B1</b> or <b>B2</b> to display the module's IP address.
 
 - If you don't have the OLED display, you can press the <b>WIFI</b> button. Now the last number of the IP address (192.168.0.x) will be
-reported by means of the red and blue leds as follows:
+reported by means of the red and blue leds as follows: blue LED will light for 1s, after that the red LED will blink to report the 
+hundreds, next blue LED lights for 1s and
 ```
 example : IP-address = 192.168.0.125
 
