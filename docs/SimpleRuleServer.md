@@ -217,7 +217,7 @@ topic=tzb/tele/SENSOR
 Has no formatting and is typically combined with a full-topic (equals xPhcLogd compatible STMD reporting format):
 ```
 flat-format ::= <string> | <number>
-  string    ::= *("a-z" | "A-Z" | "0-9" | "_-/.")
+  string    ::= *(<b>"a-z"</b> | "A-Z" | "0-9" | "_-/.")
   number    ::= integer | floating
 ```
 Examples
@@ -459,6 +459,21 @@ State rules are triggered by incoming events when matching the topic-filter and 
 Their purpose is to extract information from the event topic/data and store that into one or more state objects for later reference.
 
 This is a complex operation because the event topic/data are highly variable with respect to content and format.
+
+To accomplish this you can use the &lt;modifier> and &lt;keys> parameters, depending on their combination the resulting state objects
+will have a different name and value as specified in below table:
+```
+modifier | keys | state-obj-name        | state-obj-value
+---------+------+-----------------------+-----------------
+-        | -    | <topic>               | <data>
+-        | x    | <topic>/<key>         | <key-value>
+infix    | -    | <topic>/<infix>       | <data>
+infix    | x    | <topic>/<infix>/<key> | <key-value>
+prefix   | -    | <prefix>              | <data>
+prefix   | x    | <prefix>/<key>        | <key-value>
+name     | -    | <name>                | <data>
+name     | x    | <name>                | <key-value>
+```
 
 ####etopic
 An event with a full topic typically has flat data associated with it, 
