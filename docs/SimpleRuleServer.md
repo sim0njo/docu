@@ -230,15 +230,16 @@ data=25.9
 #### JSON
 Follows the JSON syntax rules, allows multiple endpoints/attributes to be reported in key:value pairs:
 ```
-json-format ::= "{" <key> ":" <value> *["," <key> ":" <value>] "}"
-  key       ::= <string>
-  value     ::= <string> | <number> | <object> | <array> | <boolean> | <null>
-  string    ::= """ *("a-z" | "A-Z" | "0-9" | "_-/.") """
-  number    ::= integer | floating
-  object    ::= "{" <key> ":" <value> *["," <key> ":" <value>] "}"
-  array     ::= "[" <value> *["," <value>] "]"
-  boolean   ::= "false" | "true"
-  null      ::= "null"
+json-format    ::= { <key-name> : <key-value> *[, <key-name> : <key-value>] }
+  key-name     ::= <string>
+  key-value    ::= <string> | <number> | <object> | <array> | <boolean> | <null>
+  string       ::= <double-quote> *(a-z A-Z 0-9 _-/.) <double-quote>
+  number       ::= integer | floating
+  object       ::= { <key> : <value> *[, <key> : <value>] }
+  array        ::= [ <value> *[, <value>] ]
+  boolean      ::= false | true
+  null         ::= null
+  double-quote ::= "
 ```
 Examples
 ```
@@ -249,10 +250,10 @@ data={"Name":"living/id3","MultiInValue":1,"Click":"single","Endpoint":2,"LinkQu
 #### Text
 Similar to JSON format but without the syntax decoration, allows multiple endpoints/attributes to be reported in key:value pairs:
 ```
-text-format ::= <key> [":"<value>] *[","<key> [":"<value>]]
-  key       ::= <string>
-  value     ::= <string> | <number>
-  string    ::= *("a-z" | "A-Z" | "0-9" | "_-/.")
+text-format ::= <key-name> [ : <key-value>] *[ , <key-name> [ : <key-value>]]
+  key-name  ::= <string>
+  key-value ::= <string> | <number>
+  string    ::= *(a-z A-Z 0-9 _-/.)
   number    ::= integer | floating
 ```
 Examples
@@ -454,7 +455,7 @@ exit  >clock topic=daily              days=0;
 ```
 
 ### State Rule
-State rules are triggered by incoming events when matching the topic-filter and optional data-filter.
+State rules are triggered by incoming events when matching the <b>topic-filter</b> and optional <b>data-filter</b>.
 
 Their purpose is to extract information from the event topic/data and store that into one or more state objects for later reference.
 
@@ -463,16 +464,16 @@ This is a complex operation because the event topic/data are highly variable wit
 To accomplish this you can use the &lt;modifier> and &lt;keys> parameters, depending on their combination the resulting state objects
 will have a different name and value as specified in below table:
 ```
-modifier | keys | state-obj-name        | state-obj-value
----------+------+-----------------------+-----------------
--        | -    | <topic>               | <data>
--        | x    | <topic>/<key>         | <key-value>
-infix    | -    | <topic>/<infix>       | <data>
-infix    | x    | <topic>/<infix>/<key> | <key-value>
-prefix   | -    | <prefix>              | <data>
-prefix   | x    | <prefix>/<key>        | <key-value>
-name     | -    | <name>                | <data>
-name     | x    | <name>                | <key-value>
+modifier | keys | state-obj-name             | state-obj-value
+---------+------+----------------------------+-----------------
+-        | -    | <topic>                    | <data>
+-        | x    | <topic>/<key-name>         | <key-value>
+infix    | -    | <topic>/<infix>            | <data>
+infix    | x    | <topic>/<infix>/<key-name> | <key-value>
+prefix   | -    | <prefix>                   | <data>
+prefix   | x    | <prefix>/<key-name>        | <key-value>
+name     | -    | <name>                     | <data>
+name     | x    | <name>                     | <key-value>
 ```
 
 ####etopic
