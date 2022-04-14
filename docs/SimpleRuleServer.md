@@ -11,15 +11,24 @@ In general above rules are triggered by an event (unless otherwise stated),
 these can come from different sources like an MQTT client, HTTP server, a clock, a timer or the hosting application
 (in casu Phc2Mqtt provides system and STMD events).
 
-Some rules are able to store part of an event's data or a fixed value into an internal piece of memory called state objects, 
-these can be used in a condition.
+Some rules are able to store part of an event's content or a fixed value into an internal piece of memory called a state-object, 
+which can be used in a condition.
 
-A condition compares the value of a state object to a fixed value to determine the flow of actions.
+A condition compares the value of a state-object to a fixed value to determine the flow of actions.
 
 Finally, the purpose of SRSD is to execute actions to realise the automation tasks, 
 this can be sending an MQTT message, execute a PHC command, starting or stopping a clock or timer, ...
 
 ## Rule Syntax
+Rules are expressed in a simplified JSON format, removing redundant decoration, and stored in a rule file.
+
+Strings that only contain a-z A-Z 0-9, underscore, hyphen, forward slash or a period don't required surrounding double-quotes, although
+they are allowed. 
+
+If a string contains other characters than described above, it needs to be enclosed in double-quotes. If the string itself 
+contains a double-quote then it needs to be escaped as \"
+
+
 A rule can span 1 or more lines but the last line always ends on a semicolon (;).
 
 Each line in a rule carries 1 functional block as shown in the Backus-Naur format below, the split over lines is intentional and strict.
@@ -27,6 +36,69 @@ Each line in a rule carries 1 functional block as shown in the Backus-Naur forma
 A space character is used to separate rule fields and can thus not be used as data.
 
 Keywords and delimiters (between double quotes) in rules are case-insensitive, actual data strings are case-sensitive.
+
+```ini
+rules          ::= rules:{ *[<rule> | <comment>] }
+
+comment        ::= ; [<string>]
+
+rule           ::= <init-rule> | <exit-rule> | <state-rule> | <action-rule>
+
+init-rule      ::= init:{ <action> }
+
+exit-rule      ::= exit:{ <action> }
+
+state-rule     ::= state:{ <event> [<modifier>] [keys:<key-filter> *[<comma><key-filter>]]
+  modifier     ::= infix:<string> | prefix:<string> | name:<string>
+
+action-rule    ::= action:{ *when:{ <event> } *then:{ <action> } }
+
+action-rule    ::= *when:{ <event> }  
+                     if:{ <cond> }   *[and:{ <cond> } ]  
+                       *then:{ <action> }  
+                     *[elif:{ <cond> } *[and:{ <cond> } ]  
+                       *then:{ <action> } ]  
+                     *[else:{ <action> } ]
+
+event          ::= src:<source> topic:<topic-filter> [data:<data-filter>]
+  source       ::= clock | http | mqtt | stmd | system | timer
+
+cond           ::= src:<source> topic:<topic-name> oper:<oper> value:<string>|<number>
+  source       ::= clock | state | timer
+  oper         ::= eq | ne | lt | gt | le | ge
+
+action         ::= <clock-action> | <mqtt-action> | <stmd-action> | <state-action> | <timer-action>
+  clock-action ::= dst:clock topic:<topic-name> days:<days> [onhour:0-23 onminute:0-59 offhour:0-23 offminute:0-59]
+  mqtt-action  ::= dst:mqtt  topic:<topic-name> data:<string>
+  stmd-action  ::= dst:stmd  ccmd:<phc-cmd> *[<semicolon><phc-cmd>]
+  state-action ::= dst:state topic:<topic-name> value:<string>|<number>
+  timer-action ::= dst:timer topic:<topic-name> seconds:0-4294967295
+    days       ::= or-ed value of selected days: sun=1,mon=2,tue=4,wed=8,thu=16,fri=32,sat=64
+
+topic-filter   ::= *('a-z' | 'A-Z' | '0-9' | '_-/.' | '?' | '#' | '*')
+key-filter     ::= *('a-z' | 'A-Z' | '0-9' | '_-/.' | '?' | '#' | '*')
+  ?            ::= any character (1)
+  #            ::= 1 or more numerical digits
+  *            ::= any characters from this point on
+
+data-filter    ::= <OR-pattern>
+  OR-pattern   ::= <AND-pattern> *[<pipe><AND-pattern>]
+  AND-pattern  ::= <string> *[<ampersand><string>]
+
+topic-name     ::= <basic-string>
+phc-cmd        ::= refer to the PHC Command Reference
+number         ::= *('0-9') [ <period> *('0-9')]
+string         ::= <basic-string> | <quoted-string>
+basic-string   ::= *('a-z' | 'A-Z' | '0-9' | '_-/.')
+quoted-string  ::= <double-quote> *('a-z' | 'A-Z' | '0-9' | '_-/. ,|&\"':;{}[]') <double-quote>
+
+period         ::= '.'
+comma          ::= ','
+semicolon      ::= ';'
+pipe           ::= '|'
+ampersand      ::= '&'
+double-quote   ::= '"'
+```
 
 ```ini
 rules          ::= "<rules>"
@@ -41,8 +113,8 @@ init rule      ::= "init" <action>
 
 exit rule      ::= "exit" <action>
 
-state-rule     ::= "state" <event> [<modifier>["="<string>]] ["keys="<key-filter> *["," <key-filter>]]
-  modifier     ::= "infix" | "prefix" | "name" | "etopic"
+state-rule     ::= "state" <event> [<modifier>"="<string>] ["keys="<key-filter> *["," <key-filter>]]
+  modifier     ::= "infix" | "prefix" | "name"
 
 action-rule    ::= *("when" <event>)  
                      *("then" <action>)
@@ -327,7 +399,7 @@ Are used to match the event topic and support wildcard characters:
 - A question-mark (<b>?</b>) means that the character in that position can be any character  
 - A hashtag (<b>#</b>) means one or more numeric digits match  
 - An asterisk (<b>*</b>) means all following characters are a match  
-- All other characters (<b>0-9</b>,<b>a-z</b>,<b>A-Z</b>, <b>_-.;</b>) require a 1-on-1 case-sensitive match
+- All other characters (<b>0-9</b>,<b>a-z</b>,<b>A-Z</b>, <b>_-/.</b>) require a 1-on-1 case-sensitive match
 
 #### Data-filters
 Are used to match the event data and are composed from OR- and AND-patterns:  
@@ -455,46 +527,34 @@ exit  >clock topic=daily              days=0;
 ```
 
 ### State Rule
-State rules are triggered by incoming events when matching the <b>topic-filter</b> and optional <b>data-filter</b>.
+State rules are triggered by incoming events when matching the &lt;topic-filter> and optional &lt;data-filter>.
 
 Their purpose is to extract information from the event topic/data and store that into one or more state objects for later reference.
 
 This is a complex operation because the event topic/data are highly variable with respect to content and format.
 
-To accomplish this you can use the &lt;modifier> and &lt;keys> parameters, depending on their combination the resulting state objects
+To accomplish this you can use the &lt;modifier> and &lt;keys> parameters, depending on their combination the resulting state-objects
 will have a different name and value as specified in below table:
 ```
-modifier | keys | state-obj-name             | state-obj-value
----------+------+----------------------------+-----------------
--        | -    | <topic>                    | <data>
--        | x    | <topic>/<key-name>         | <key-value>
-infix    | -    | <topic>/<infix>            | <data>
-infix    | x    | <topic>/<infix>/<key-name> | <key-value>
-prefix   | -    | <prefix>                   | <data>
-prefix   | x    | <prefix>/<key-name>        | <key-value>
-name     | -    | <name>                     | <data>
-name     | x    | <name>                     | <key-value>
+modifier | keys | state-object-name             | state-object-value
+---------+------+-------------------------------+--------------------
+-        | -    | <topic>                       | <data>
+-        | x    | <topic>/<key-name>            | <key-value>
+infix    | -    | <topic>/<infix>               | <data>
+infix    | x    | <topic>/<infix>/<key-name>    | <key-value>
+prefix   | -    | <prefix>                      | <data>
+prefix   | x    | <prefix>/<key-name>           | <key-value>
+name     | -    | <name>                        | <data>
+name     | x    | <name>                        | <key-value>
 ```
 
-####etopic
-An event with a full topic typically has flat data associated with it, 
-to handle this we define a state rule with a &lt;topic-filter> and &lt;modifier>=etopic but without &lt;data-filter> or &lt;keys> parameters.
+####keys
+Events with a full topic typically have flat data associated with it, 
+to handle this we do not use the &lt;modifier> nor &lt;keys> parameters.
 
-The resulting state object's topic will be equal to the event's topic, and a value equal to the event's data.
+The resulting state-object's name will be equal to the event's topic, and a value equal to the event's data.
 This rule format covers the xPhcLogd compatible STMD reporting format.
 
-Examples:
-```
-event       : topic=sta/omd.0.out0 data=1
-rule        : state <stmd topic=sta/omd.0.out0 etopic;
-state-object: topic=sta/omd.0.out0 value=1
-```
-```
-event       : topic=evt/imd.0.in0 data=outlt1
-rule        : state <stmd topic=evt/imd.0.in0 etopic;
-state-object: topic=evt/imd.0.in0 value=outlt1
-```
-####the rest
 All other events with a partial or general topic will typically have text or JSON formated data with key/value pairs,
 the SRSD will parse them as follows.
 
@@ -520,21 +580,19 @@ Parsed as  : key=Device      value=0x73C9
              key=Illuminance value=24699
              key=Endpoint    value=1
 ```
-For each parsed key present in the **keys** parameter, SRSD will create/update a state object to store the key's value.
+For each parsed key present in the **keys** parameter, SRSD will create/update a state-object to store the key-value.
 
-The state object topic is determined by the specified &lt;modifier>:
+####examples
 ```
-if (no <modifier>)
-  object-topic = <topic>/<key>
-if (<modifier> == infix)
-  object-topic = <topic>/<infix>/<key>
-if (<modifier> == prefix)
-  object-topic = <prefix>/<key>
-if (<modifier> == name)
-  object-topic = <name>
+event       : topic=sta/omd.0.out0 data=1
+rule        : state <stmd topic=sta/omd.0.out0 etopic;
+state-object: topic=sta/omd.0.out0 value=1
 ```
-
-Examples:
+```
+event       : topic=evt/imd.0.in0 data=outlt1
+rule        : state <stmd topic=evt/imd.0.in0 etopic;
+state-object: topic=evt/imd.0.in0 value=outlt1
+```
 ```
 event       : topic=sta/omd.0 data=out0:1,out4:0,out7:1
 rule        : state <stmd topic=sta/omd.0 keys=out#;
