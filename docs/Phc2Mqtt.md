@@ -236,7 +236,7 @@ the Internet by means of SNTP or read it from the RTC module if one is installed
 
 - If you don't have the OLED display, you can press the <b>WIFI</b> button. Now the last number of the IP address (192.168.0.x) will be
 reported by means of the red and blue leds as follows: blue LED will light for 1s, after that the red LED will blink to report the 
-hundreds, next blue LED lights for 1s and
+hundreds, next blue LED lights for 1s and the red LED will blink to report the tens, finally blue LED lights for 1s and the red LED blinks to report the units.
 ```
 example : IP-address = 192.168.0.125
 
