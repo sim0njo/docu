@@ -21,7 +21,7 @@ Finally, the purpose of SRSD is to execute actions to realise the automation tas
 this can be sending an MQTT message, execute a PHC command, starting or stopping a clock or timer, ...
 
 ## Rule Syntax
-Rules are expressed in a simplified JSON format, removing redundant decoration, and are stored in a rule file.
+Rules are expressed in a simplified JSON format, removing redundant decoration, and are stored in a rule file. 
 
 Strings that contain ';:{}[]"\', a space, a tab, a carriage-return (CR) or line-feed (LF) need enclosing double-quotes, 
 additionally the double-quote/backslash/tab/CR/LF need to be escaped as '\"', '\\\\', '\t', '\r' and '\n' respectively. 
