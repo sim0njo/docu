@@ -4,8 +4,9 @@ description: PHC Modules
 
 ##Intro
 The PHC (PEHA Home Control) domotic system knows a fair amount of different modules, 
-each module:  
+where each module:  
 - is identified by a physical module type (phy)  
+- has a derived logical module type (log)  
 - communicates via a binary protocol  
 - has a specific amount/type of channels (input/output/feedback)  
 - belongs to a module class (input/multifunction/output/analog/box/dimmer)  
@@ -16,23 +17,25 @@ Within a module class there are 32 adddresses (0-31) available, each module need
 to a unique address within it's class, otherwise conflicts will occur.
 Note that some modules use multiple addresses to cover it's functionality.
 
-Phc2Mqtt is the brigde between the module's binary protocol, and the textual interface with humans.
-As such Phc2Mqtt needs to know the physical module types to perform a correct communication with each module.
-On the human side it offers a textual command/response format that uses a logical module type (log).
+Phc2Mqtt is a two-way translator between the module's binary protocol and a textual user interface.  
+
+As such Phc2Mqtt needs to know the physical module types to correctly encode/decode the binary packets to/from any PHC modules.  
+
+On the user interface side it offers a textual command/response format that uses the logical module types (log), 
+this way the user does not need to worry about the real physical module types.  
 
 Following shows the relation between module class and logical module type:
 
 | Class | Logical Module Types
 |-------|-----------
-| Input modules | imd, imw, tab, et0
-| Multifunction modules | utm, bwm, uim, et1, mcc
-| Output modules | omd, omx, jrm
-| Analog modules | amd, fui, fu1, fu2
-| Box modules | ebs, ebr, ebd, mls
-| Dimmer modules  | dim, dal
+| (0) Input modules | imd, imw, tab, et0
+| (1) Multifunction modules | utm, bwm, uim, et1, mcc
+| (2) Output modules | omd, omx, jrm
+| (3) Analog modules | amd, fui, fu1, fu2
+| (4) Box modules | ebs, ebr, ebd, mls
+| (5) Dimmer modules  | dim, dal
 
 ##Project Information
-The information needed by Phc2Mqtt is all put together in the project information file (i.e. project.stm).
 
 ###Proxy Mode
 When running Phc2Mqtt in Proxy mode it will passively listen on the PHC module bus to report activity
@@ -52,78 +55,21 @@ In this mode Phc2Mqtt takes over the role of the STM and it needs additional inf
 - The STM responds with a config packet, now the module knows which events to report to STM  
 - After that the PHC module will report the enabled events to STM
 
-The additional information for each input (in/ir/il/im) and feedback (fb) channel of the module is:  
-- Channel identification  
-- Optional a descriptive text for this channel  
-- A list of all events enabled for this channel
-
-Output channels (mrk/led/out) can optionally specify following info:  
-- Channel identification  
-- Optional a descriptive text for this channel  
-
 ##Configuration
 The module and optional channel/event list can be provided in several ways:  
 - by uploading the project definition from the System Software v3 to Phc2Mqtt via the management interface  
-- by extracting project.ppfx from the project.zpfx file and then uploading it manual
+- by extracting project.ppfx from the project.zpfx file and then uploading it manual (only for Proxy mode)  
 
-In future we will obsolete both these methods and replace it with a full manual solution, this may sound strange but it will 
-allow for a lot of functionality on the module to be removed and a significant reduction is required memory (64Kb Flash + 64Kb RAM).
-
-To provide the manual configuration you will need to prepare a text file with below syntax and then upload it to Phc2Mqtt.
-To avoid typing errors we will make use of prepared template files per module type that can be copy/pasted with minor adjustements.
-
-For Proxy mode you need to copy the module definition, for PassiveSTMv3 mode you need to copy the module and channel definitions.
+For now we will rely on the project upload by the System Software v3, in case this is problematic the alternative method
+can be used. Please contact support for assistance.
 
 
-###Configuration Syntax
-Configuration info can span 1 or more lines but the last line always ends on a semicolon (;).
-
-Each line in the configuration carries 1 functional block as shown in the Backus-Naur format below, the split over lines is intentional and strict.
-
-A space character is used to separate fields and can thus not be used as data.
-
-If you want to use a space character in a string, then the complete string needs to be enclosed in double quotes.
-
-Keywords and delimiters (between double quotes) are case-insensitive, actual data strings are case-sensitive.
-
-```
-config         ::= "<stmd>"
-                   *[<module> | <comment>]
-                   "</stmd>"
-
-comment        ::= ";" [<string>]
-
-module         ::= "module" "id="<phy-mod>.<address>
-                     *("channel" <channel>) ";"
-
-  phy-mod      ::= physical module name
-  address      ::= 0-31
-
-channel        ::= "id="<id> "desc="<string> ["events="<event> *[","<event>]
-  id           ::= <chn-type><chn-num>
-  chn-type     ::= "in" | "ir" | "il" | "im" | "mrk" | "led" | "out" | "fb"
-  chn-num      ::= 0-31
-  event        ::= <string>
-
-string         ::= *("a-z" | "A-Z" | "0-9" | "_-/.,"':;{}")
-```
-
-###Module Templates
-Building the configuration file from scratch is a difficult task, therefore we created templates for each physical module type.
-
-Below table lists all modules, their physical and logical module types, their image and manual and the corresponding template file.
-
-Copy the template for each module you have into your config.stm file and make adjustments:  
-- adjust the <addr> of the module  
-- put all not used channels in comment  
-- optional adjust the desc field of each channel
-- for the input/feedback channels:  
-  - remove the non used events from the event-list  
-  - for light control we typiclly retain: outlt1 and ingt2  
-  - for shutter control we typically retain: ingt0 and ingt1
+###Module Overview
+Below table lists all PHC modules, their physical and logical module types, their image and manual.
 
 
-| Phy(Template) | Log | PHC product | Description/Module definition | Image(Manual)  
+
+| Phy | Log | PHC product | Description/Module definition | Image(Manual)  
 |-----|-----|-------------|-------------------------------|---------------
 | [EMD24](phc/emd24.md) | imd | 940/24EM | Input module 24 V | [<img style="float:right;width:100px;height:100px" src="../phc/EMD24.PNG"></img>](../phc/EMD24.pdf)
 | [EMD_RUE](phc/emd_rue.md) | imd | 940/24EM RU<br/>940/24EM RU diag    | Input module 24 V LED | [<img style="float:right;width:100px;height:100px" src="../phc/EMD_RUE.PNG"></img>](../phc/EMD_RUE.pdf)
