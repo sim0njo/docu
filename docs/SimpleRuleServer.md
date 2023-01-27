@@ -1,4 +1,4 @@
-description: Simple Rule Server explained.
+description: Simple Rule Server explained. 
 
 ## Intro
 The Simple Rule Server is a lightweight daemon to accomplish automation tasks and which is integrated into the [Phc2Mqtt](../phc2mqtt) project,
