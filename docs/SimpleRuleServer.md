@@ -101,7 +101,7 @@ string         ::= ['"'] *<any-character> ['"']
 ```
 
 ## Internal Objects
-SRSD knows a number of internal objects, 
+SRSD knows a number of internal objects,  
 they do not exist when SRSD starts but must be created/updated at runtime via an [action rule](#action-rule) or a [state rule](#state_rule).
 
 These objects are persistent as long as SRSD is running, when the SRSD stops their values are lost.
