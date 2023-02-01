@@ -1,7 +1,7 @@
 
 site_name: Jo Simons
 site_description: Documentation for Phc2Mqtt
-site_url: https://sim0njo.github.io/phc2mqtt/
+site_url: https://sim0njo.github.io/docs/
 docs_dir: docs
 
 theme:
