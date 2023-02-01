@@ -133,15 +133,15 @@ while fitting in a custom 3D printed 2MOD DIN-rail housing.
 
 It draws power from the PHC power supply by means of a DC/DC convertor and the RTC (realtime clock) is powered by a CR1220 replacable battery. 
 
-<img style="float:right;width:290px;height:450px" src="../img/p2m-pcb-v2.0.jpg"></img>
+<img style="float:right;width:290px;height:450px" src="../img/p2m-pcb-v2.x.jpg"></img>
 
 - BUS1/BUS2 are the PHC module bus connectors  
 - 2-pin header at top/center labeled 'PWR'  
 - 2-pin header at top/center labeled 'SPLIT'  
 - U1 is the ESP32-DevkitC dual core CPU module  
 - U3 is the DC/DC convertor power supply  
-- U4 is the RTC with replacable battery (B1)  
-- Multicolor red/blue LED on the right  
+- U4 is the RTC with replacable battery located on the underside  
+- Multicolor red/green/blue LED on the right  
 - Pushbutton on the right labeled 'WIFI'  
 - Pushbutton on the right labeled 'EN'  
 &nbsp;  
