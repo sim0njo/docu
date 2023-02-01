@@ -158,7 +158,7 @@ It draws power from the PHC power supply by means of a DC/DC convertor and the R
     The P2M module is configured by default to connect the 24V of both BUS1/BUS2 connectors by means of the SPLIT connector,
     if needed you can remove the cap from the connector to create 2 separate 24V segments.
 
-
+ 
 ##Operating modes
 Depending on the operating mode of P2M (Proxy or PassiveSTMv3), a different setup will be required.
 
