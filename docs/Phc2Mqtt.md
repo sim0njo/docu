@@ -266,8 +266,27 @@ It is preferred to assign a fixed IP address to P2M in your Wifi router menu and
 
 ###Basic configuration
 Before connecting P2M to your PHC system, it is recommended that you perform at least following configuration:  
+
 - [Configure Wifi](#configure-wifi)  
-- [Configure STM Daemon](#configure-stm-daemon)
+
+- [Configure MQTT Client](#configure-mqtt-client)  
+
+- [Configure PHC Interfaces](#configure-phc-interfaces) and put PHC Mgmt Interface Admin State to 'Enabled', then press Save  
+
+- [Configure STM Daemon](#configure-stm-daemon) and put Operating Mode to 'Proxy', 
+  select 'Generate from transferred project' under Configuration, then press Save
+
+- Reboot the module to let changes take effect    
+
+- Create a project in the PEHA Systemsoftware v3 that contains:  
+  -- an STM v3 and enter the IP address for Phc2Mqtt module  
+  -- all modules present in your PHC system  
+
+- In PEHA Systemsoftware goto Transfer window:
+  --  press Start to transfer the project to Phc2Mqtt  
+  -- watch all steps turn green  
+
+- Goto [Configure STM Daemon](#configure-stm-daemon) to verify the list of modules  
 
 After that you power it down and continue with the next step.
 
