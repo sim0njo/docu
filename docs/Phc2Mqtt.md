@@ -159,6 +159,17 @@ It draws power from the PHC power supply by means of a DC/DC convertor and the R
     if needed you can remove the cap from the connector to create 2 separate 24V segments.
 
  
+##Admin-State vs Oper-State
+Throughout the documentation you will references to Admin-State and Oper-State.
+
+###Admin-State
+This is the desired state of a subsystem in P2M module, this can be enabled or disabled. 
+When you change the Admin-State in a configuration webpage this will not take effect immediately, it requires a P2M module reboot.
+
+###Oper-State
+When the P2M module boots, it will start subsystems such that the subsystem Oper-State equals the Admin-State as configured.
+
+
 ##Operating modes
 Depending on the operating mode of P2M (Proxy or PassiveSTMv3), a different setup will be required.
 
@@ -392,7 +403,7 @@ it will connect to the broker and provide a send/receive path to P2M for receivi
 and reporting information.
 
 The MQTT client itself will not subscribe to any topic, the different sub-systems in P2M will do this
-to suit their needs. Refer to chapters 6.6, 6.7 and 6.8 for details.
+to suit their needs. Refer to [Configure Simple Rule Server](#configure-simple-rule-server), 6.7 and 6.8 for details.
 
 When the MQTT client receives published messages, it will offer them to the different sub-systems in P2M,
 it is upto them to determine whether to use the message or not.
@@ -415,7 +426,9 @@ Notice that 'p2m' is choosen intentionally to indicate direction, from PHC to MQ
 
 By using asymetric &lt;rx-topic-prefix> and &lt;tx-topic-prefix> we can avoid receiving the own published messages to &lt;tx-topic-prefix>.
 But you can choose whatever you want.  
-- **Admin State**: Allows you to enable/disable the MQTT client.  
+
+- **Admin State**: Specifies the desired state of the MQTT client after P2M reboot, this does not immediately change the operational state.  
+
 - **Save**: Press this button to save settings, [reboot](#reboot) P2M to let changes take effect.
 
 ###Configure Logging
@@ -445,9 +458,9 @@ after reading it you will know that SRSD needs events to trigger rules that lead
 <img style="float:right;width:352px;height:584px" src="../img/p2m-config-srsd.jpg"></img>
 - <b>RX Topic Prefixes</b>: Enter upto 4 topic prefixes of max 24 characters. On startup SRSD will subscribe to each '&lt;rx-topic-prefix>/#'
 to receive messages from the MQTT broker. When SRSD stops it will unsubscribe from each '&lt;rx-topic-prefix>/#'.  
-- <b>Admin State</b>: Allows you to enable or disable the SRS daemon.  
+- <b>Admin State</b>: Specifies the desired state of the SRS daemon after P2M reboot, this does not change the operational state.  
 - <b>Save</b>: Press this button to save settings, [reboot](#reboot) P2M to let changes take effect.  
-- <b>Start Now/Stop Now</b>: Using this button you can instantly change the Oper State of SRSD, this does not change the <b>Admin State</b>.  
+- <b>Start Now/Stop Now</b>: Using this button you can instantly change the Oper State of SRSD, this does not immediately change the <b>Admin State</b>.  
 - <b>Download Rules</b>: Allows you to download the active rules file.  
 - <b>Upload & Validate New Rules</b>: Allows you to load a new set of rules, this is a 2 step procedure. In the first step you select a new rule file
 by pressing 'Choose File', selecting a file and then pressing <b>Start</b>.
@@ -522,7 +535,8 @@ Goto the transfer window of the Systemsoftware and press <b>Start</b>, the proje
 it also relays commands coming in from MQTT client to the real (remote) STM in your PHC system via the External Client interface.
 
 'PassiveSTMv3': The STMD replaces the real STM of your PHC system, it is the master of the PHC module bus and communicates directly with
-the PHC modules.  
+the PHC modules. Commands coming in from MQTT client will be executed, events coming from PHC modules are only reported to MQTT client/SRS daemon.  
+
 
 - <b>Configuration</b>: Selects how P2M will handle incoming project data via the PHC Management Interface
 
