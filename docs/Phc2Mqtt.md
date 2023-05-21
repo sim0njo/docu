@@ -138,9 +138,7 @@ It draws power from the PHC power supply by means of a DC/DC convertor and the R
 - BUS1/BUS2 are the PHC module bus connectors  
 - 2-pin header at top/center labeled 'PWR'  
 - 2-pin header at top/center labeled 'SPLIT'  
-- U1 is the ESP32-DevkitC dual core CPU module  
-- U3 is the DC/DC convertor power supply  
-- U4 is the RTC with replacable battery located on the underside  
+- ESP32-DevkitC is the dual core CPU module  
 - Multicolor red/green/blue LED on the right  
 - Pushbutton on the right labeled 'WIFI'  
 - Pushbutton on the right labeled 'EN'  
@@ -202,11 +200,22 @@ such that the Systemsoftware and a web browser have access to it for configurati
 It is via the same WLAN access that P2M will connect to an MQTT Broker to provide it's services to a wider community.
 
 In PassiveSTMv3 mode no additional hardware is needed to send commands to the PHC system as it is actively connected to the PHC module bus.
-P2M will provide configuration information to the PHC modules when they (re)boot, it will acknowledge events sent by the PHC modules and report them (to logfile, MQTT),
+P2M will provide configuration information to the PHC modules when they (re)boot, it will acknowledge events sent by the PHC modules and report them (to MQTT, SRS),
 and finally it will translate incoming MQTT commands and send them to the PHC modules, all in a timely fashion respecting the bus protocol and timing.
 
 The reason why we call this PassiveSTMv3 mode is because P2M does not handle PHC module events, it just forwards them over MQTT.
 Opposed to a real STM that will lookup the event in the internal program memory and execute the commands linked to the event.
+
+<p align="center">
+<img src="../img/p2m-e2e-passive.jpg" width="457" height="365"></td>
+</p>
+
+###ActiveSTMv3 mode
+This mode is similar to PassiveSTMv3 mode, the real STM module (v1/2/3) is removed from the PHC system, and P2M takes it&#39;s place. P2M will
+be the master of the PHC module bus and talks directly to the PHC modules.
+
+The difference is that ActiveSTMv3 mode will use the internal programming as defined in the SystemSoftware v3, so an event coming from a
+PHC module will be handled like a real STM does. It will find out what actions are linked to the event and carry them out.
 
 <p align="center">
 <img src="../img/p2m-e2e-passive.jpg" width="457" height="365"></td>
