@@ -603,6 +603,38 @@ Additional [conditions](#conditions) may be defined that determine the flow of a
 
 ##Rule Samples
 
+###Samples for Text or JSON report format
+
+!!! warning 
+    These sample rules expect the [STMD Reporting](../phc2mqtt/#configure-stmd-reporting) Format to be 'Text' or 'JSON'
+    and Data Format to be 'Binary'.
+
+Simple controlling one or more outputs with one or more buttons:
+```
+action:{
+ when:{
+  ; clicking on a PHC button will trigger
+  stmd:{ topic:evt/imw.13 data:"in4:outlt1" }
+
+  ; or clicking on an Aqara Opple 3 band Zigbee button
+  mqtt:{ topic:tzb/tele/SENSOR data:"Name\":\"aqara/inputs&Click\":\"single&Endpoint\":4" }
+ }; when
+ 
+ then:{
+  ; toggle a PHC output
+  stmd:{ ccmd:omd.4.out0.toggle }
+  
+  ; send multiple commands, note the double quotes are needed for the ; between the commands
+  stmd:{ ccmd:"omd.4.out0.toggle;omd.4.out3.ontimed.5" }
+
+  ; toggle an IKEA Zigbee outlet
+  mqtt:{ topic:tzb/cmnd/ZbSend data:"{\"device\":\"ikea/outlet\",\"send\":{\"power\":\"toggle\"}}" }
+ }; then
+}; action
+```
+
+###Samples for xPhcLogd report format
+
 !!! warning 
     These sample rules expect the [STMD Reporting](../phc2mqtt/#configure-stmd-reporting) Format to be 'xPhcLogd compatible'
     and Data Format to be 'Binary'.
