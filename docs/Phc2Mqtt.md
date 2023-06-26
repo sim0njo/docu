@@ -156,9 +156,12 @@ It draws power from the PHC power supply by means of a DC/DC convertor and the R
     The P2M module is configured by default to connect the 24V of both BUS1/BUS2 connectors by means of the SPLIT connector,
     if needed you can remove the cap from the connector to create 2 separate 24V segments.
 
+<p align="center">
+<img src="../img/p2m-v2.3.jpg" width="457" height="365"></td>
+</p>
  
 ##Admin-State vs Oper-State
-Throughout the documentation you will references to Admin-State and Oper-State.
+Throughout the documentation you will find references to Admin-State and Oper-State.
 
 ###Admin-State
 This is the desired state of a subsystem in P2M module, this can be enabled or disabled. 
@@ -169,7 +172,7 @@ When the P2M module boots, it will start subsystems such that the subsystem Oper
 
 
 ##Operating modes
-Depending on the operating mode of P2M (Proxy or PassiveSTMv3), a different setup will be required.
+Depending on the operating mode of P2M (Proxy, PassiveSTMv3 or ActiveSTMv3), a different setup will be required.
 
 ###Proxy mode
 In this mode P2M is chained into the PHC module bus using two 6-wire cables with RJ11 male connectors,
