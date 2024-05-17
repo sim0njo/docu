@@ -1,0 +1,11 @@
+###ActiveSTMv3 mode
+This mode is similar to PassiveSTMv3 mode, the real STM module (v1/2/3) is removed from the PHC system, and P2M takes it&#39;s place. P2M will
+be the master of the PHC module bus and talks directly to the PHC modules.
+
+The difference is that ActiveSTMv3 mode will use the internal programming as defined in the SystemSoftware v3, so an event coming from a
+PHC module will be handled like a real STM does. It will find out what actions are linked to the event and carry them out.
+
+<p align="center">
+<img src="../img/p2m-e2e-passive.jpg" width="457" height="365"></td>
+</p>
+

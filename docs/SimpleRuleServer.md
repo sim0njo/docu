@@ -268,8 +268,8 @@ when:{system:{topic:mqtt data:connected   }} ; MQTT client connected to broker
 when:{system:{topic:mqtt data:disconnected}} ; MQTT client disconnected from broker
 when:{system:{topic:stmd data:started     }} ; STM daemon started
 when:{system:{topic:stmd data:stopped     }} ; STM daemon stopped
-when:{system:{topic:wifi data:connected   }} ; Wifi client connected to AP
-when:{system:{topic:wifi data:disconnected}} ; Wifi client disconnected from AP
+when:{system:{topic:netw data:connected   }} ; network is online (got IP address)
+when:{system:{topic:netw data:disconnected}} ; network is offline (lost IP address)
 ```
 The reason of existence for the system events comes from the startup order of the module's sub-systems. 
 By default the SRSD will be started early during module boot. 

@@ -160,6 +160,16 @@ It draws power from the PHC power supply by means of a DC/DC convertor and the R
 <img src="../img/p2m-v2.3.jpg" width="457" height="365"></td>
 </p>
  
+
+###Version 3.1
+This version has a single mainboard that contains the Lilygo T-ETH-Lite ESP32 and supports Ethernet and Wifi connectivity,
+it's form maximalizes the board space available while fitting in a custom 3D printed 2MOD DIN-rail housing.
+
+It draws power from the PHC power supply by means of a DC/DC convertor and the RTC (realtime clock) is powered by a CR1220 replacable battery. 
+
+To be completed
+
+
 ##Admin-State vs Oper-State
 Throughout the documentation you will find references to Admin-State and Oper-State.
 
@@ -208,17 +218,6 @@ and finally it will translate incoming MQTT commands and send them to the PHC mo
 
 The reason why we call this PassiveSTMv3 mode is because P2M does not handle PHC module events, it just forwards them over MQTT.
 Opposed to a real STM that will lookup the event in the internal program memory and execute the commands linked to the event.
-
-<p align="center">
-<img src="../img/p2m-e2e-passive.jpg" width="457" height="365"></td>
-</p>
-
-###ActiveSTMv3 mode
-This mode is similar to PassiveSTMv3 mode, the real STM module (v1/2/3) is removed from the PHC system, and P2M takes it&#39;s place. P2M will
-be the master of the PHC module bus and talks directly to the PHC modules.
-
-The difference is that ActiveSTMv3 mode will use the internal programming as defined in the SystemSoftware v3, so an event coming from a
-PHC module will be handled like a real STM does. It will find out what actions are linked to the event and carry them out.
 
 <p align="center">
 <img src="../img/p2m-e2e-passive.jpg" width="457" height="365"></td>
