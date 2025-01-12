@@ -161,15 +161,6 @@ It draws power from the PHC power supply by means of a DC/DC convertor and the R
 </p>
  
 
-###Version 3.1
-This version has a single mainboard that contains the Lilygo T-ETH-Lite ESP32 and supports Ethernet and Wifi connectivity,
-it's form maximalizes the board space available while fitting in a custom 3D printed 2MOD DIN-rail housing.
-
-It draws power from the PHC power supply by means of a DC/DC convertor and the RTC (realtime clock) is powered by a CR1220 replacable battery. 
-
-To be completed
-
-
 ##Admin-State vs Oper-State
 Throughout the documentation you will find references to Admin-State and Oper-State.
 
