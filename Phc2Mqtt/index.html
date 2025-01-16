@@ -1,0 +1,2079 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Phc2Mqtt">
+      
+      
+      
+        <link rel="canonical" href="https://sim0njo.github.io/docs/Phc2Mqtt/">
+      
+      
+      
+        <link rel="next" href="../PhcModules/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>User Manual - Jo Simons</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Barlow";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#abbreviations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Jo Simons" class="md-header__button md-logo" aria-label="Jo Simons" data-md-component="logo">
+      
+  <img src="../img/home.gif" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Jo Simons
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              User Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Phc2Mqtt
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Downloads/" class="md-tabs__link">
+        
+  
+    
+  
+  Downloads
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="http://sim0njo.github.io/install" class="md-tabs__link">
+        
+  
+    
+  
+  ESP Web Installer
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Jo Simons" class="md-nav__button md-logo" aria-label="Jo Simons" data-md-component="logo">
+      
+  <img src="../img/home.gif" alt="logo">
+
+    </a>
+    Jo Simons
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Phc2Mqtt
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Phc2Mqtt
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    User Manual
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    User Manual
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abbreviations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abbreviations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    <span class="md-ellipsis">
+      History
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contribute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-2223" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 2.2/2.3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#admin-state-vs-oper-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-State vs Oper-State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Admin-State vs Oper-State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-State
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oper-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oper-State
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passivestmv3-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      PassiveSTMv3 mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-usage-of-p2m" class="md-nav__link">
+    <span class="md-ellipsis">
+      First usage of P2M
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="First usage of P2M">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linking-p2m-to-your-wifi-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linking P2M to your Wifi network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-p2m-linked-to-your-wifi-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding P2M linked to your Wifi network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-p2m-to-your-phc-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting P2M to your PHC system
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Menu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Wifi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-mqtt-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure MQTT Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-simple-rule-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Simple Rule Server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-phc-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure PHC Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-stm-daemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure STM Daemon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-stm-ha-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure STM HA Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-stm-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure STM Reporting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phc-cmd-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHC Cmd Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firmware Upgrade
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reboot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Info
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Info">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enumerating-module-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerating Module Channels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-console-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Console Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PhcModules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phc Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SimpleRuleServer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple Rule Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Downloads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Downloads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="http://sim0njo.github.io/install" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP Web Installer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abbreviations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abbreviations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    <span class="md-ellipsis">
+      History
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contribute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-2223" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 2.2/2.3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#admin-state-vs-oper-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-State vs Oper-State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Admin-State vs Oper-State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-State
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oper-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oper-State
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passivestmv3-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      PassiveSTMv3 mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-usage-of-p2m" class="md-nav__link">
+    <span class="md-ellipsis">
+      First usage of P2M
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="First usage of P2M">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linking-p2m-to-your-wifi-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linking P2M to your Wifi network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-p2m-linked-to-your-wifi-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding P2M linked to your Wifi network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-p2m-to-your-phc-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting P2M to your PHC system
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Menu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Wifi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-mqtt-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure MQTT Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-simple-rule-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Simple Rule Server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-phc-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure PHC Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-stm-daemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure STM Daemon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-stm-ha-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure STM HA Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-stm-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure STM Reporting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phc-cmd-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHC Cmd Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firmware Upgrade
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reboot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Info
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Info">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enumerating-module-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerating Module Channels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-console-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Console Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>User Manual</h1>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Phc2Mqtt is not a commercial product and support is limited. 
+You have to be willing to research and solve potential problems yourself. 
+The author has no liability, you can use this software at your own risk.</p>
+</div>
+<h2 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Permanent link">~</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP</td>
+<td>Internet Protocol, the networking protocol that runs over Ethernet (wired) or Wifi (wireless)</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>Transmission Control Protocol, runs on top of IP and is a connection oriented protocol</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>HyperText Transfer Protocol, runs on top of TCP in a request-reponse model</td>
+</tr>
+<tr>
+<td>XMLRPC</td>
+<td>XML encoded Remote Procedure Call, this protocol is used by the PHC Systemsoftware v3 to configure an STMv3. The commands are encoded in XML and the request is sent over HTTP</td>
+</tr>
+<tr>
+<td>MQTT</td>
+<td>A compact telemetry protocol typically used in IoT applications, runs over TCP</td>
+</tr>
+<tr>
+<td>PHC</td>
+<td>PEHA Home Control domotic system</td>
+</tr>
+<tr>
+<td>STM</td>
+<td>STeering Module, the central processor in a PHC system</td>
+</tr>
+<tr>
+<td>System Software</td>
+<td>THe Windows application to configure and program your PHC system</td>
+</tr>
+<tr>
+<td>PCB</td>
+<td>Printed Circuit Board, a non-conductive material with copper patterns on 1 or 2 sides to interconnect electronic components</td>
+</tr>
+<tr>
+<td>ESP32 DevkitC</td>
+<td>The ESP32 dual core module that is used for Phc2Mqtt, we use the WROVER version with 4Mb/8Mb flash memory and 4Mb PSRAM</td>
+</tr>
+<tr>
+<td>P2M</td>
+<td>The combination of the hardware and software that make up the functionality of Phc2Mqtt</td>
+</tr>
+<tr>
+<td>Sub-system</td>
+<td>A functional part of P2M that performs a certain task and is under supervision of P2M</td>
+</tr>
+<tr>
+<td>NVS</td>
+<td>Non-volatile storage, a part of memory that stores data and settings permanently, even when power fails</td>
+</tr>
+<tr>
+<td>Admin State</td>
+<td>Administrative state (enable/disable) is saved in NVS memory, the wanted running state of a sub-system after rebooting P2M</td>
+</tr>
+<tr>
+<td>Oper State</td>
+<td>Operational state (stopped/started), this is the actual running state of a sub-system. A sub-system will be stopped when booting P2M, if the admin state is enable, then the sub-system will be started and the oper-state will become started</td>
+</tr>
+<tr>
+<td>AP-mode</td>
+<td>Access Point mode, the Phc2Mqtt module acts as an access point to which you can connect with a Wifi enabled PC or Smart Phone</td>
+</tr>
+<tr>
+<td>STA-mode</td>
+<td>Station mode, the Phc2Mqtt module connects to a Wifi AP as a station, you can access P2M via the WLAN network</td>
+</tr>
+<tr>
+<td>OTA-update</td>
+<td>Over-The-Air, refers to firmware upgrade by simple file upload, as such you don't need to open P2M or use specialized hardware</td>
+</tr>
+<tr>
+<td>Serial-update</td>
+<td>Refers to firmware upgrade via a USB port, this requires connecting a USB cable to P2M</td>
+</tr>
+</tbody>
+</table>
+<h2 id="history">History<a class="headerlink" href="#history" title="Permanent link">~</a></h2>
+<p>The very beginning of this project goes back to 2005 with the Windows based WRC+iControl webinterface for PHC domotic systems.</p>
+<p>From 2007 on a move was made to support Windows and Linux with a cross platform framework that resulted in xWRC, ideal to run on a Raspberry Pi.</p>
+<p>As the Raspberry Pi does not handle power fails very well, another solution was needed in the form of an embedded system, we choose the ESP32. </p>
+<p>In 2020 we finally started extending the cross platform framework to FreeRTOS/ESP32 and Phc2Mqtt saw the light in early 2021.</p>
+<h2 id="contribute">Contribute<a class="headerlink" href="#contribute" title="Permanent link">~</a></h2>
+<p>Any input from the users is welcome, report your problems/questions/wishes to <a href="mailto:simonjo@telenet.be">simonjo@telenet.be</a>
+and we (me, myself and I) will help you as soon as possible,</p>
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">~</a></h2>
+<p>Phc2Mqtt is the combination of a hardware module (PCB + components) and operating software known as firmware.
+For simplicity we will furthermore refer to the Phc2Mqtt combination as <strong>P2M</strong>.</p>
+<p>Purpose of P2M is to make a PHC domotic system accessible via MQTT,
+both for reporting PHC activity and for sending commands to the PHC system.</p>
+<p>A PHC domotic system is made up from a steering module (STM) which is the master,
+and 1 or more PHC modules connected over an RS485 PHC module bus, communicating via a proprietary binary protocol.</p>
+<p>The STM also has a management interface via which it is configured using the Systemsoftware,
+for an STMv1/2 this is an RS232 serial link with a binary protocol,
+for an STMv3 this is an ethernet interface with the XMLRPC protocol.</p>
+<p>From version 4.2.0.0 on we introduce the Simple Rule Server daemon (SRSD), this server lets you specify JSON format rules that are triggered by
+events and which can execute one or more actions. See <a href="/phc2mqtt/SimpleRuleServer">Simple Rule Server</a> for details.</p>
+<h2 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">~</a></h2>
+<p>The initial version of the P2M PCB was v1.2. Feedback from testers showed some issues in the design
+that needed fixing, and this resulted in a PCB v1.3. A further evolution is PCB v2.x. 
+The different hardware versions will be explained here.</p>
+<h3 id="version-12">Version 1.2<a class="headerlink" href="#version-12" title="Permanent link">~</a></h3>
+<p><img style="float:right;width:254px;height:440px" src="../img/p2m-pcb-v1.2.jpg"></img>
+To the right is the layout of the PCB, it fits in a 3MOD DIN-rail housing, relevant items are:  </p>
+<ul>
+<li>CN1/CN2 are the PHC module bus connectors  </li>
+<li>X2 is an optional 24V power connector, not used  </li>
+<li>ESP32-DevkitC with a red power LED, this is the CPU  </li>
+<li>Pushbutton at the bottom labeled 'WIFI'  </li>
+<li>Pushbutton at the bottom labeled 'SPARE', not used  </li>
+<li>Pushbutton at the bottom labeled 'EN'  </li>
+<li>2-pin header at top/right labeled 'PWR'  </li>
+<li>2 LED's on the right labeled 'BLUE' and 'RED'<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;  </li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Fieldtests have shown that P2M cannot be powered reliably from the PHC power supply
+as it draws upto 140mA of current, resulting in unpredictable behaviour.
+So therefore it is recommended to connect the ESP32-DevkitC to a USB power supply (or a spare PC) after
+removing the cap from the PWR connector on the PCB.
+To do this, open P2M and take out the PCB, now remove the cap on the PWR connector on the right/top side of P2M.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Failing to remove the cap can and will most likely damage P2M, USB power supply or the used PC.</p>
+</div>
+<h3 id="version-13">Version 1.3<a class="headerlink" href="#version-13" title="Permanent link">~</a></h3>
+<p>This version has a separate mainboard and a plugon physical user interface (PUI). The mainboard contains the ESP32-DevkitC,
+a 230V power supply to make P2M independent of the PHC bus, and has provisions to hold an optional battery backed RTC (realtime clock) module.</p>
+<p>The PUI is plugged onto 2 raising connectors and carries the red and blue LED's, 2 extra buttons and an optional OLED display (8 lines x 16 chars).</p>
+<p>It still fits in a 3MOD DIN-rail housing. If the housing has a red transparent top cover then it is better to remove it as this blocks blue light.</p>
+<p><img style="float:right;width:226px;height:580px" src="../img/p2m-pcb-v1.3.jpg"></img>
+<strong>Main PCB</strong>  </p>
+<ul>
+<li>BUS1/BUS2 are the PHC module bus connectors  </li>
+<li>2-pin header at top/center labeled 'PWR'  </li>
+<li>ESP32-DevkitC with a red power LED, this is the CPU  </li>
+<li>Under the DevkitC you will see the power supply  </li>
+<li>RTC is the optional realtime clock with battery  </li>
+<li>Power connector at bottom/center labeled '230V'  </li>
+<li>Pushbutton at the bottom left labeled 'WIFI'  </li>
+<li>Pushbutton at the bottom right labeled 'EN'<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;  </li>
+</ul>
+<p><strong>PUI PCB</strong>  </p>
+<ul>
+<li>Two buttons on the top labeled 'B1' and 'B2'  </li>
+<li>An optional OLED display (8 x 16)  </li>
+<li>Two LED's on the bottom labeled 'BLUE' and 'RED'<br />
+&nbsp;<br />
+&nbsp;  </li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>P2M is configured by default to power from the internal power supply, 
+if you want to power it via USB you need to remove the cap from the PWR connector first (top/center on main PCB).</p>
+</div>
+<h3 id="version-2223">Version 2.2/2.3<a class="headerlink" href="#version-2223" title="Permanent link">~</a></h3>
+<p>This version has a single mainboard that contains the ESP32-DevkitC, it's form maximalizes the board space available
+while fitting in a custom 3D printed 2MOD DIN-rail housing.</p>
+<p>It draws power from the PHC power supply by means of a DC/DC convertor and the RTC (realtime clock) is powered by a CR1220 replacable battery. </p>
+<p><img style="float:right;width:290px;height:450px" src="../img/p2m-pcb-v2.x.jpg"></img></p>
+<ul>
+<li>BUS1/BUS2 are the PHC module bus connectors  </li>
+<li>2-pin header at top/center labeled 'PWR'  </li>
+<li>2-pin header at top/center labeled 'SPLIT'  </li>
+<li>ESP32-DevkitC is the dual core CPU module  </li>
+<li>Multicolor red/green/blue LED on the right  </li>
+<li>Pushbutton on the right labeled 'WIFI'  </li>
+<li>Pushbutton on the right labeled 'EN'<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;  </li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The P2M module is configured by default to power from the PHC module bus, 
+if you want to power it via USB you need to remove the cap from the PWR connector first (top/center on PCB).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The P2M module is configured by default to connect the 24V of both BUS1/BUS2 connectors by means of the SPLIT connector,
+if needed you can remove the cap from the connector to create 2 separate 24V segments.</p>
+</div>
+<p align="center">
+<img src="../img/p2m-v2.3.jpg" width="457" height="365"></td>
+</p>
+
+<h2 id="admin-state-vs-oper-state">Admin-State vs Oper-State<a class="headerlink" href="#admin-state-vs-oper-state" title="Permanent link">~</a></h2>
+<p>Throughout the documentation you will find references to Admin-State and Oper-State.</p>
+<h3 id="admin-state">Admin-State<a class="headerlink" href="#admin-state" title="Permanent link">~</a></h3>
+<p>This is the desired state of a subsystem in P2M module, this can be enabled or disabled. 
+When you change the Admin-State in a configuration webpage this will not take effect immediately, it requires a P2M module reboot.</p>
+<h3 id="oper-state">Oper-State<a class="headerlink" href="#oper-state" title="Permanent link">~</a></h3>
+<p>When the P2M module boots, it will start subsystems such that the subsystem Oper-State equals the Admin-State as configured.</p>
+<h2 id="operating-modes">Operating modes<a class="headerlink" href="#operating-modes" title="Permanent link">~</a></h2>
+<p>Depending on the operating mode of P2M (Proxy, PassiveSTMv3 or ActiveSTMv3), a different setup will be required.</p>
+<h3 id="proxy-mode">Proxy mode<a class="headerlink" href="#proxy-mode" title="Permanent link">~</a></h3>
+<p>In this mode P2M is chained into the PHC module bus using two 6-wire cables with RJ11 male connectors,
+and it will passively monitor messages exchanged between PHC modules and STM.</p>
+<p>Following drawing gives an overview of the end-to-end system architecture.</p>
+<p>The intention is that P2M connects to the wireless LAN (WLAN)
+such that the Systemsoftware and a web browser have access to it for configuration and reporting purposes.</p>
+<p>It is via the same WLAN access that P2M will connect to an MQTT Broker to provide it's services to a wider community.</p>
+<p>Finally an optional IP-wise connection to the STM management interface is made through the WLAN to send commands to the PHC system.
+In case of the older STMv1/v2 you also need an IP-2-RS232 convertor like MOXA NPort 5110 and the sorts.
+In case of the STMv3 you can directly use it&#39;s network connection.</p>
+<div style="display:flex;align-items:center;justify-content:center;">
+<img src="../img/p2m-e2e-proxy.jpg" width="457" height="365"></td>
+</div>
+
+<h3 id="passivestmv3-mode">PassiveSTMv3 mode<a class="headerlink" href="#passivestmv3-mode" title="Permanent link">~</a></h3>
+<p>In this mode the real STM module (v1/2/3) is removed from the PHC system, and P2M takes it&#39;s place. P2M will
+be the master of the PHC module bus and talks directly to the PHC modules.</p>
+<p>Same as in Proxy mode, P2M connects to the wireless LAN (WLAN)
+such that the Systemsoftware and a web browser have access to it for configuration and reporting purposes.</p>
+<p>It is via the same WLAN access that P2M will connect to an MQTT Broker to provide it's services to a wider community.</p>
+<p>In PassiveSTMv3 mode no additional hardware is needed to send commands to the PHC system as it is actively connected to the PHC module bus.
+P2M will provide configuration information to the PHC modules when they (re)boot, it will acknowledge events sent by the PHC modules and report them (to MQTT, SRS),
+and finally it will translate incoming MQTT commands and send them to the PHC modules, all in a timely fashion respecting the bus protocol and timing.</p>
+<p>The reason why we call this PassiveSTMv3 mode is because P2M does not handle PHC module events, it just forwards them over MQTT.
+Opposed to a real STM that will lookup the event in the internal program memory and execute the commands linked to the event.</p>
+<p align="center">
+<img src="../img/p2m-e2e-passive.jpg" width="457" height="365"></td>
+</p>
+
+<h2 id="first-usage-of-p2m">First usage of P2M<a class="headerlink" href="#first-usage-of-p2m" title="Permanent link">~</a></h2>
+<p>When you use P2M for the first time it will not be configured, you must first setup the Wifi connection to make your P2M
+reachable and then do basic configuration before connecting P2M to your PHC system.</p>
+<h3 id="linking-p2m-to-your-wifi-network">Linking P2M to your Wifi network<a class="headerlink" href="#linking-p2m-to-your-wifi-network" title="Permanent link">~</a></h3>
+<ul>
+<li>
+<p>An unconfigured P2M cannot connect to your Wifi network, therefore it will startup in AP-mode whereby the red LED will be on continiously.</p>
+</li>
+<li>
+<p><b style="color:red">Note: </b>In AP-mode only the webserver will run to allow configuration of P2M.</p>
+</li>
+<li>
+<p>Use a Wifi enabled PC to connect to P2M's AP by looking for a network called '<b>p2m_xxxxxx</b>',
+the x's represent the lower 3 bytes of the P2M's MAC address.</p>
+</li>
+<li>
+<p>Once connected to P2M's AP, use a web browser to access it on <b>192.168.4.1</b>,
+you will receive the main webpage as described in chapter 6.1.</p>
+</li>
+<li>
+<p>Goto <a href="#configure-wifi">Configure Wifi</a> to configure the Wifi settings.</p>
+</li>
+<li>
+<p>After you configured the Wifi settings, reboot P2M via <b>Main Menu</b>-&gt;<b style="color:red">Reboot</b> (preferred),
+alternatively you can press the <b>EN</b> button (less preferred).</p>
+</li>
+<li>
+<p>The P2M module starts up and lights both red and blue LEDs, then connects to your Wifi network, after which both LEDs will turn off,
+P2M is now in STA-mode.</p>
+</li>
+<li>
+<p>P2M will try to obtain date/time from
+the Internet by means of SNTP or read it from the RTC module if one is installed.</p>
+</li>
+</ul>
+<h3 id="finding-p2m-linked-to-your-wifi-network">Finding P2M linked to your Wifi network<a class="headerlink" href="#finding-p2m-linked-to-your-wifi-network" title="Permanent link">~</a></h3>
+<ul>
+<li>
+<p>Now P2M is connected to your Wifi network, you need to find out it's IP address.</p>
+</li>
+<li>
+<p>If your P2M has the optional OLED display, then press button <b>B1</b> or <b>B2</b> to display P2M's IP address.</p>
+</li>
+<li>
+<p>If you don't have the OLED display, you can press the <b>WIFI</b> button. Now the last number of the IP address (192.168.0.x) will be
+reported by means of the red and blue leds as follows:  </p>
+</li>
+<li>blue LED will light for 1s, after that the red LED will blink to report the hundreds</li>
+<li>next blue LED lights for 1s and the red LED will blink to report the tens</li>
+<li>next blue LED lights for 1s and the red LED blinks to report the units</li>
+<li>
+<p>finally blue LED lights for 1s to terminate the sequence
+<div class="highlight"><pre><span></span><code>example : IP-address = 192.168.0.105
+
+           on ----      ----    ----                  ----
+blue LED: off     ------    ----    ------------------    --
+
+           on         -                 - - - - -
+red LED : off -------- ----------------- - - - - -----------
+
+each -  : 1/4 second
+</code></pre></div></p>
+</li>
+<li>
+<p>You can also you log on to your Wifi router to consult the list of connected clients.
+Look for an entry showing 'Espressif', enter the shown IP address in a web browser, you should see the <a href="#main-menu">Main Menu</a> webpage.</p>
+</li>
+<li>
+<p>As above IP address is obtained via DHCP from your Wifi network, it may be different each time P2M reboots.
+It is preferred to assign a fixed IP address to P2M in your Wifi router menu and save the settings.</p>
+</li>
+<li>
+<p>Now reboot P2M, your Wifi router will assign it a fixed/DHCP IP address each time P2M starts up.</p>
+</li>
+<li>
+<p>Use a web browser to access P2M on the known IP address.</p>
+</li>
+</ul>
+<h3 id="basic-configuration">Basic configuration<a class="headerlink" href="#basic-configuration" title="Permanent link">~</a></h3>
+<p>Before connecting P2M to your PHC system, it is recommended that you perform at least following configuration:  </p>
+<ul>
+<li>
+<p><a href="#configure-wifi">Configure Wifi</a>  </p>
+</li>
+<li>
+<p><a href="#configure-mqtt-client">Configure MQTT Client</a>  </p>
+</li>
+<li>
+<p><a href="#configure-phc-interfaces">Configure PHC Interfaces</a> and put PHC Mgmt Interface Admin State to 'Enabled', then press Save  </p>
+</li>
+<li>
+<p><a href="#configure-stm-daemon">Configure STM Daemon</a> and put Operating Mode to 'Proxy', 
+  select 'Generate from transferred project' under Configuration, then press Save</p>
+</li>
+<li>
+<p>Reboot the module to let changes take effect    </p>
+</li>
+<li>
+<p>Create a project in the PEHA Systemsoftware v3 that contains:<br />
+  -- an STM v3 and enter the IP address for Phc2Mqtt module<br />
+  -- all modules present in your PHC system  </p>
+</li>
+<li>
+<p>In PEHA Systemsoftware goto Transfer window:
+  --  press Start to transfer the project to Phc2Mqtt<br />
+  -- watch all steps turn green  </p>
+</li>
+<li>
+<p>Goto <a href="#configure-stm-daemon">Configure STM Daemon</a> to verify the list of modules  </p>
+</li>
+</ul>
+<p>After that you power it down and continue with the next step.</p>
+<h3 id="connecting-p2m-to-your-phc-system">Connecting P2M to your PHC system<a class="headerlink" href="#connecting-p2m-to-your-phc-system" title="Permanent link">~</a></h3>
+<ul>
+<li>
+<p>Turn off your PHC system and make sure it is no longer powered.</p>
+</li>
+<li>
+<p>If you intend to run in <b>Proxy</b> mode, then chain P2M in the PHC module bus by removing a 6-wire cable from a PHC module/STM
+and plugging it in <b>CN1/BUS1</b> on P2M.
+Then plug a new 6-wire cable with 2 RJ11 connectors in <b>CN2/BUS2</b> of P2M and back in the PHC module/STM to complete the chain.</p>
+</li>
+<li>
+<p>Make some space and place P2M onto the DIN rail such that it is mechanically stable.</p>
+</li>
+</ul>
+<div style="display:flex;align-items:center;justify-content:center;">
+<img src="../img/p2m-setup-proxy.jpg" width="557" height="464"></td>
+</div>
+
+<ul>
+<li>
+<p>If you intend to run in <b>PassiveSTMv3</b> mode, then remove the real STM from your system and connect P2M with the existing 6-wire cables.</p>
+</li>
+<li>
+<p>Place P2M onto the free space on the DIN rail such that it is mechanically stable.</p>
+</li>
+</ul>
+<div style="display:flex;align-items:center;justify-content:center;">
+<img src="../img/p2m-setup-passive.jpg" width="557" height="464"></td>
+</div>
+
+<ul>
+<li>
+<p>Power on P2M and your PHC system.</p>
+</li>
+<li>
+<p>You will see the red power LED on the ESP32-DevkitC turn on.</p>
+</li>
+<li>
+<p>P2M will start up an connect to your Wifi network.</p>
+</li>
+</ul>
+<h2 id="web-interface">Web Interface<a class="headerlink" href="#web-interface" title="Permanent link">~</a></h2>
+<p>Configuration and management of P2M can be done via a web interface by entering the known IP address in a browser.</p>
+<h3 id="main-menu">Main Menu<a class="headerlink" href="#main-menu" title="Permanent link">~</a></h3>
+<p><img style="float:right;width:352px;height:294px" src="../img/p2m-main-menu.jpg"></img></p>
+<p>The homepage of P2M is the main menu as shown on the right.</p>
+<p>Click on a button to enter the related page.
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;  </p>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">~</a></h3>
+<p><img style="float:right;width:352px;height:430px" src="../img/p2m-config.jpg"></img></p>
+<p>Click on a button to enter the related configuration page.</p>
+<p>&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;  </p>
+<h3 id="configure-wifi">Configure Wifi<a class="headerlink" href="#configure-wifi" title="Permanent link">~</a></h3>
+<p><img style="float:right;width:352px;height:304px" src="../img/p2m-config-wifi.jpg"></img></p>
+<ul>
+<li>
+<p><strong>Remote AP SSID</strong> (network name) and <strong>Remote AP Password</strong>: P2M will use these credentials to connect in STA-mode to the Wifi network.
+When you leave these fields empty, P2M will boot into AP-mode.  </p>
+</li>
+<li>
+<p><strong>Web Admin Password</strong>: You can specify a password to protect web access to P2M, in this case you need to logon to P2M
+when prompted by the browser, the username is &#39;admin&#39; completed with the specified password.  </p>
+</li>
+<li>
+<p><b>Save</b>: Press this button to save settings, then <a href="#reboot">reboot</a> P2M to let changes take effect.  </p>
+</li>
+</ul>
+<p><b style="color:red">Lockout:</b>
+If you entered a wrong Remote AP SSID/Password, connecting to the Wifi network will fail. P2M will retry connecting 3 times after which
+it will alternately flash blue/red module LEDs for 3 seconds to indicate the failure, next P2M will reboot and connecting starts again...<br />
+until connection succeeds. This can cause a lockout where you cannot access P2M.</p>
+<p>The lockout can also happen if you forgot the Web Admin Password or if you replaced your Wifi network with another.  </p>
+<p><b style="color:red">Recovery:</b>
+You can recover from this lockout by pressing and holding the <b>WIFI</b> button, then press/release the <b>EN</b> button.
+P2M will reboot, flashing blue/red module LEDs simultaneous for 3 seconds to confirm the pressed <b>WIFI</b> button,
+you can release the <b>WIFI</b> button by now.  </p>
+<p>P2M will boot in AP-mode and turn the red module LED on to indicate this, after which you can connect to your module's AP
+and access it on 192.168.4.1 with a web browser without password.
+Change the Wifi settings to the correct values, save them and reboot P2M to revert to normal STA-mode operation.  </p>
+<h3 id="configure-mqtt-client">Configure MQTT Client<a class="headerlink" href="#configure-mqtt-client" title="Permanent link">~</a></h3>
+<p>The MQTT client is the interface to the MQTT broker (server), when enabled
+it will connect to the broker and provide a send/receive path to P2M for receiving commands
+and reporting information.</p>
+<p>The MQTT client itself will not subscribe to any topic, the different sub-systems in P2M will do this
+to suit their needs. Refer to <a href="#configure-simple-rule-server">Configure Simple Rule Server</a>, 6.7 and 6.8 for details.</p>
+<p>When the MQTT client receives published messages, it will offer them to the different sub-systems in P2M,
+it is upto them to determine whether to use the message or not.
+&nbsp;</p>
+<p><img style="float:right;width:352px;height:568px" src="../img/p2m-config-mqtc.jpg"></img>
+- <b>Broker IP Address</b> and <b>Broker IP Port</b>: Enter the MQTT Broker IP address and port (default 1883), these fields are mandatory.<br />
+- <b>ClientId</b>: A unique name across all clients that connect to the same broker, maximum 24 characters, mandatory.</p>
+<p>If this is not unique the MQTT client will loose it&#39;s connection from time to time.<br />
+- <b>User</b> and <b>Password</b>: Optional, if needed to connect to the broker.<br />
+- <b>RX Topic Prefix</b>: Max 24 characters. P2M will request the MQTT client to subscribe to '&lt;rx-topic-prefix&gt;/#' to receive messages with commands for the PHC modules.</p>
+<p>We propose to use '&lt;alias&gt;/m2p', where you replace &lt;alias&gt; with a name for your house/location.
+Notice that 'm2p' is choosen intentionally to indicate direction, from MQTT to PHC.<br />
+- <b>TX Topic Prefix</b>: Max 24 characters. This prefix is used when publishing messages to the MQTT broker.</p>
+<p>We propose to use '&lt;alias&gt;/p2m', where you replace &lt;alias&gt; with a name for your house/location.
+Notice that 'p2m' is choosen intentionally to indicate direction, from PHC to MQTT.</p>
+<p>By using asymetric &lt;rx-topic-prefix&gt; and &lt;tx-topic-prefix&gt; we can avoid receiving the own published messages to &lt;tx-topic-prefix&gt;.
+But you can choose whatever you want.  </p>
+<ul>
+<li>
+<p><strong>Admin State</strong>: Specifies the desired state of the MQTT client after P2M reboot, this does not immediately change the operational state.  </p>
+</li>
+<li>
+<p><strong>Save</strong>: Press this button to save settings, <a href="#reboot">reboot</a> P2M to let changes take effect.</p>
+</li>
+</ul>
+<h3 id="configure-logging">Configure Logging<a class="headerlink" href="#configure-logging" title="Permanent link">~</a></h3>
+<p>P2M has extensive logging features that enable you to monitor module behaviour, but also to give you support in case of problems.</p>
+<p>Some of them generate serious overhead so they must remain inactive as much as possible and should only be set when asked by support team.</p>
+<p>To provide the usable and necessary feedback to the user we suggest below settings:</p>
+<p><img style="float:right;width:352px;height:408px" src="../img/p2m-config-logr.jpg"></img>
+- <b>Serial Loglevel</b>: Set to '0 None' for normal operation, serial logging is sent over the USB connection of the ESP32 DevkitC.<br />
+- <b>Web Loglevel</b>: Should be set to '2 Info' for normal operation,
+this logging can be observed in the <a href="#web-console">Web Console</a>.<br />
+- <b>Syslog Loglevel</b>: Set to '0 None' for normal operation.<br />
+- <b>Syslog IP Address</b> and <b>Syslog IP Port</b>: In case syslog logging is needed,
+fill out the IP address and port (default 514) of the target syslog daemon.<br />
+- <b>Save</b>: Press this button to save settings, <b>Serial Loglevel</b>, <b>Web Loglevel</b> and <b>Syslog Loglevel</b> changes will have immediate effect,
+the other settings require a module <a href="#reboot">reboot</a> to let changes take effect.</p>
+<h3 id="configure-simple-rule-server">Configure Simple Rule Server<a class="headerlink" href="#configure-simple-rule-server" title="Permanent link">~</a></h3>
+<p>The <a href="../SimpleRuleServer">Simple Rule Server</a> manual gives a detailed explanation of the SRS daemon (SRSD),
+after reading it you will know that SRSD needs events to trigger rules that lead to actions, P2M provides following:<br />
+- HTTP events: can be initiated via: <b>http://</b>&lt;ip-address&gt;<b>/srsd?</b>&lt;query-string&gt;<br />
+- MQTT events: can be initiated by publishing messages to any of below <b>RX Topic Prefixes</b><br />
+- STMD events: can be initiated by enabling them in <a href="#configure-stm-reporting">Configure STM Reporting</a>.</p>
+<p><img style="float:right;width:352px;height:584px" src="../img/p2m-config-srsd.jpg"></img>
+- <b>RX Topic Prefixes</b>: Enter upto 4 topic prefixes of max 24 characters. On startup SRSD will subscribe to each '&lt;rx-topic-prefix&gt;/#'
+to receive messages from the MQTT broker. When SRSD stops it will unsubscribe from each '&lt;rx-topic-prefix&gt;/#'.<br />
+- <b>Admin State</b>: Specifies the desired state of the SRS daemon after P2M reboot, this does not change the operational state.<br />
+- <b>Save</b>: Press this button to save settings, <a href="#reboot">reboot</a> P2M to let changes take effect.<br />
+- <b>Start Now/Stop Now</b>: Using this button you can instantly change the Oper State of SRSD, this does not immediately change the <b>Admin State</b>.<br />
+- <b>Download Rules</b>: Allows you to download the active rules file.<br />
+- <b>Upload &amp; Validate New Rules</b>: Allows you to load a new set of rules, this is a 2 step procedure. In the first step you select a new rule file
+by pressing 'Choose File', selecting a file and then pressing <b>Start</b>.</p>
+<p>During validation the new rule file will be uploaded to a temporary file and parsed for correctness without interfering with the active rules. In a new webpage
+you will see all lines of the rule file appear with warnings (orange) or errors (red) annotated.</p>
+<p>If errors occured in the rule file then you will see only <b>Configure Simple Rule Server</b> button, correct the error in the new rule file, go back and retry validation.</p>
+<p>If no errors occured in the rule file then you will see <b>Configure Simple Rule Server</b> and <b>Activate New Rules</b> buttons.</p>
+<p>If you don't want to activate
+the new rules then go back or press the <b>Configure Simple Rule Server</b> button.</p>
+<p>If you want to activate the new rules then press the <b>Activate New Rules</b> button,
+now the new rules will be put in service by removing the old rules and replacing them with the new rules. This is a permanent change.
+During this process SRSD will not be available, but albeit this is a very short period.</p>
+<h3 id="configure-phc-interfaces">Configure PHC Interfaces<a class="headerlink" href="#configure-phc-interfaces" title="Permanent link">~</a></h3>
+<p>P2M provides a number of PHC interfaces serving different purposes.</p>
+<p><img style="float:right;width:352px;height:616px" src="../img/p2m-config-phc-itfs.jpg"></img></p>
+<h4 id="phc-management-interface">PHC Management Interface<a class="headerlink" href="#phc-management-interface" title="Permanent link">~</a></h4>
+<p>This interface is used to configure P2M with project data from the Systemsoftware v3 using XMLRPC as transfer protocol.</p>
+<ul>
+<li><b>Management STM Address</b>: This should match the STM address as defined in your project in the Systemsoftware, by default this is 0.</li>
+<li><b>Admin State</b>: Enable/disable the management interface of P2M.</li>
+<li><b>Save</b>: Press this button to save settings, changes take effect after rebooting P2M.</li>
+</ul>
+<h4 id="phc-external-client">PHC External Client<a class="headerlink" href="#phc-external-client" title="Permanent link">~</a></h4>
+<p>This interface is used to send commands to an external real STM module (v1/v2/v3).</p>
+<ul>
+<li><b>Remote STM Mode</b>: Select the appropriate remote STM in your PHC system.  </li>
+<li><b>Remote STM IP Address</b> and <b>Port</b>: IP address and port on which the remote STM in your PHC system is reachable.</li>
+</ul>
+<p>For an STMv3 this is the STM&#39;s IP address and port will be 6680.</p>
+<p>For an STMv1/v2 this will be the IP address of the IP-2-RS232 convertor,
+the port depends on the settings of the convertor which must be in TCP server mode.<br />
+- <b>Remote STM Mgmt Address</b>: This is the remote STM management address as defined in the Systemsoftware for the STM component, normally this is 0.<br />
+- <b>Admin State</b>: Enable/disable the PHC external client.<br />
+- <b>Save</b>: Press this button to save settings, changes take effect after rebooting P2M.</p>
+<h3 id="configure-stm-daemon">Configure STM Daemon<a class="headerlink" href="#configure-stm-daemon" title="Permanent link">~</a></h3>
+<p>The STM Daemon (STMD) is the heart of P2M which coordinates activities to/from the PHC system,
+it relies on project configuration data received via the <a href="#phc-management-interface">PHC Management Interface</a>.</p>
+<p>This project config data is stored in 2 files:<br />
+- project.prg: Contains the functional/basic programming of your project in compiled binary form.<br />
+- project.zip: Contains the metadata of your project in zipped format, it is an exact copy of project.zpfx as created by
+the Systemsoftware.</p>
+<p>This ZIP file contains a number of files, but P2M is only interested in project.ppfx, which contains an XML formatted
+list of PHC modules present in your PHC system. STMD parses that XML file to build a module-list which is needed for correct operation
+of the reporting and command handling sub-systems.</p>
+<p>To transfer the project data:<br />
+- Enable the PHC Management Interface<br />
+- Open your project.zpfx file in the Systemsoftware, goto the properties of the STM in your project and
+enter P2M's IP address, press TAB and you should notice that version 3.30 is reported.</p>
+<p>Goto the transfer window of the Systemsoftware and press <b>Start</b>, the project data will be transfered to P2M, you can observe this in the <b>Web Console</b>.</p>
+<p><img style="float:right;width:352px;height:616px" src="../img/p2m-config-stmd.jpg"></img>
+- <b>Operating Mode</b>:</p>
+<p>'Proxy': The STMD analyzes packets on the PHC module bus and reports events/status via the MQTT client,
+it also relays commands coming in from MQTT client to the real (remote) STM in your PHC system via the External Client interface.</p>
+<p>'PassiveSTMv3': The STMD replaces the real STM of your PHC system, it is the master of the PHC module bus and communicates directly with
+the PHC modules. Commands coming in from MQTT client will be executed, events coming from PHC modules are only reported to MQTT client/SRS daemon.  </p>
+<ul>
+<li><b>Configuration</b>: Selects how P2M will handle incoming project data via the PHC Management Interface</li>
+</ul>
+<p>'Manual upload &amp; validate new configuration': You will need to upload project.ppfx yourself (see below), this is intended as backup in case the first option fails.</p>
+<p>'Generate from transferred project': The STMD will automatically extract project.ppfx after transferring the project data with the
+Systemsoftware, and will rebuild P2M-list by parsing project.ppfx.</p>
+<p>'Generate from transferred project + HA data': The STMD will automatically extract project.ppfx after transferring the project data
+with the Systemsoftware, and will rebuild P2M-list by parsing project.ppfx. It will also generate data describing your PHC 
+system that can be sent out via MQTT so Home Assistant (HA) can discover it (experimental).</p>
+<ul>
+<li><b>Module-List</b>:</li>
+</ul>
+<p>The window below lists all modules as known in your project, the left column is the logical module type that will be used in reporting/commands,
+the right column is the physical module type which is more detailed.</p>
+<p>Both reporting and command handling sub-systems use this module-list to correctly convert PHC module bus packets to/from readable format.</p>
+<p>When STMD sees activity from PHC modules not in P2M-list, it will add them with the default module type depending on the PHC module address.
+Note that this may lead to wrong interpretation of modules packets and wrong commands offered. So make your PHC project in the Systemsoftware as accurate as
+possible to avoid issues.
+<div class="highlight"><pre><span></span><code>Address 0x00-0x1F : imd
+        0x20-0x3F : uim
+        0x40-0x5F : omd
+        0x60-0x7F : amd
+        0x80-0x9F : ebs
+        0xA0-0xBF : dim
+</code></pre></div>
+- <b>Save</b>: Press this button to save settings, <a href="#reboot">reboot</a> P2M to let changes take effect.  </p>
+<ul>
+<li><b>Upload &amp; Validate New Config</b>: Here you can manually upload project.ppfx. You can obtain this file by opening your project.zpfx file
+with WinZip/7Zip/... and extracting the file project.ppfx. If you have multiple STM's in your PHC system, then split project.ppfx into
+1 file per STM and reduce the contents before uploading as P2M has approximately 600Kb available to store it.</li>
+</ul>
+<p>Press <b>Choose file</b> to select your project.ppfx file, then press <b>Start</b>, P2M will now upload the file and parse it
+to build P2M-list.</p>
+<h3 id="configure-stm-ha-discovery">Configure STM HA Discovery<a class="headerlink" href="#configure-stm-ha-discovery" title="Permanent link">~</a></h3>
+<p>Home Assistant (HA) is a leading automation integrator and we are trying to provide an easy way to advertise the capabilities of your
+PHC system to HA. This is done by publishing available components/channels via MQTT to a certain topic. </p>
+<p><img style="float:right;width:352px;height:328px" src="../img/p2m-config-ha-disco.jpg"></img>
+- <b>Discovery Topic Prefix</b>: The prefix of the topic to which to publish MQTT messages.<br />
+- <b>Discovery Interval</b>: The rate at which to publish advertise messages.<br />
+- <b>Discovery Retain</b>: Enable/disable the retain flag in the MQTT messages.<br />
+- <b>Save</b>: Press this button to save settings.<br />
+- <b>Discover Now</b>: Press this button to publish P2M capabilities to HA.
+  This functionality is still experimental at this moment and reports only available modules/channels. New development is ongoing.</p>
+<h3 id="configure-stm-reporting">Configure STM Reporting<a class="headerlink" href="#configure-stm-reporting" title="Permanent link">~</a></h3>
+<p>The STMD reporting sub-system is the one looking at all the packets that are sent over the PHC module bus it is attached to,
+and which reports them in readable format based on P2M-list.</p>
+<p><img style="float:right;width:352px;height:328px" src="../img/p2m-config-repd.jpg"></img>
+- <b>Reporting Format</b>: The reporting format, see below.<br />
+- <b>Data Format</b>: How a zero or one state is reported, either binary as '0'/'1' or as boolean as 'false'/'true'.<br />
+- <b>Report To MQTT</b>: Enable/disable reporting via the MQTT client on a per type basis
+(boo=boot, evt=event, sta=state, cmd=command).</p>
+<p>The MQTT client will prepend '&lt;tx-topic-prefix&gt;/'.<br />
+- <b>Report To MQTT Retain</b>: Enable/disable the retain flag of the MQTT message on a per type basis
+(boo=boot, evt=event, sta=state, cmd=command).<br />
+- <b>Report To SRS</b>: Enable/disable reporting to the SRSD on a per type basis
+(boo=boot, evt=event, sta=state, cmd=command).<br />
+- <b>Save</b>: Press this button to save settings after which they take effect (no need to reboot).</p>
+<h4 id="reporting-formats">Reporting Formats<a class="headerlink" href="#reporting-formats" title="Permanent link">~</a></h4>
+<p><strong>xPhcLogd compatible</strong>: This format equals the reporting done by the xPhcLogd tool,
+and reports a change on each channel separately.</p>
+<p>This can lead to a storm of reports because STMD reports each channel the first time a module is seen, 
+for example an output module will have all 8 outputs reported.
+<div class="highlight"><pre><span></span><code>topic=boo/&lt;mod&gt;.&lt;addr&gt;        data=[&lt;value&gt;]
+topic=evt/&lt;mod&gt;.&lt;addr&gt;.&lt;chan&gt; data=&lt;event&gt;
+topic=sta/&lt;mod&gt;.&lt;addr&gt;.&lt;chan&gt; data=&lt;state&gt;
+topic=cmd/&lt;mod&gt;.&lt;addr&gt;.&lt;chan&gt; data=&lt;cmd&gt; *[.&lt;parm&gt;]
+</code></pre></div>
+Examples:
+<div class="highlight"><pre><span></span><code>topic=boo/omd.0      data=
+topic=evt/imd.0.in0  data=ingt0
+topic=sta/omd.0.out3 data=1
+topic=cmd/omd.0.out3 data=ontimed.300
+</code></pre></div>
+<strong>Text format</strong>: Groups reportable items per PHC module in plain text using key/value pairs:
+<div class="highlight"><pre><span></span><code>topic=boo/&lt;mod&gt;.&lt;addr&gt; data=[attrib:&lt;value&gt;]
+topic=evt/&lt;mod&gt;.&lt;addr&gt; data=&lt;chan&gt;:&lt;event&gt; *[,&lt;chan&gt;:&lt;event&gt;]
+topic=sta/&lt;mod&gt;.&lt;addr&gt; data=&lt;chan&gt;:&lt;state&gt; *[,&lt;chan&gt;:&lt;state&gt;]
+topic=cmd/&lt;mod&gt;.&lt;addr&gt; data=&lt;chan&gt;:&lt;cmd&gt; *[.&lt;parm&gt;]
+</code></pre></div>
+Examples:
+<div class="highlight"><pre><span></span><code>topic=boo/omd.0 data=
+topic=evt/imd.0 data=in0:ingt0
+topic=sta/omd.0 data=out0:1,out1:0,out2:0,out3:1,out4:0,out5:0,out6:0,out7:0
+topic=cmd/omd.0 data=out3:ontimed.300
+</code></pre></div>
+<strong>JSON format</strong>: Groups reportable items per PHC module in JSON syntax using key/value pairs:
+<div class="highlight"><pre><span></span><code>topic=boo/&lt;mod&gt;.&lt;addr&gt; data={ [attrib:&lt;value&gt;]                  }
+topic=evt/&lt;mod&gt;.&lt;addr&gt; data={ &lt;chan&gt;:&lt;event&gt; *[,&lt;chan&gt;:&lt;event&gt;] }
+topic=sta/&lt;mod&gt;.&lt;addr&gt; data={ &lt;chan&gt;:&lt;state&gt; *[,&lt;chan&gt;:&lt;state&gt;] }
+topic=cmd/&lt;mod&gt;.&lt;addr&gt; data={ &lt;chan&gt;:&lt;cmd&gt; *[.&lt;parm&gt;]           }
+</code></pre></div>
+Examples:
+<div class="highlight"><pre><span></span><code>topic=boo/omd.0 data={}
+topic=evt/imd.0 data={&quot;in0&quot;:&quot;ingt0&quot;}
+topic=sta/omd.0 data={&quot;out0&quot;:1,&quot;out1&quot;:0,&quot;out2&quot;:0,&quot;out3&quot;:1,&quot;out4&quot;:0,&quot;out5&quot;:0,&quot;out6&quot;:0,&quot;out7&quot;:0}
+topic=cmd/omd.0 data={out3:ontimed.300}
+</code></pre></div>
+To see the differences you can later on observe them in the <a href="#web-console">Web Console</a>.  </p>
+<h3 id="phc-cmd-reference">PHC Cmd Reference<a class="headerlink" href="#phc-cmd-reference" title="Permanent link">~</a></h3>
+<p>By clicking on a hyperlink in this page you will get a list of commands applicable to the clicked item in the text area below.</p>
+<p><b style="color:red">Note:</b>
+Commands related to input (in%/ir%/im%/il%) and feedback (fb%) channels are not available in PassiveSTMv3 mode as the STMD
+does not handle them.</p>
+<p>These commands can be executed by publishing an MQTT message to topic '<rx-topic-prefix>/cmd/ccmd' where the data part contains the commands.
+These commands can also be executed by entering them in the Web Console command line.</p>
+<p align="center">
+<img src="../img/p2m-ccmd-ref.jpg" width="980" height="610"></td>
+</p>
+
+<h3 id="file-maintenance">File Maintenance<a class="headerlink" href="#file-maintenance" title="Permanent link">~</a></h3>
+<p><img style="float:right;width:352px;height:320px" src="../img/p2m-file-maint.jpg"></img>
+In this menu you can download or clear/delete files:<br />
+- <b>Download File</b>: Select the desired file in the dropdown list, then click <b>Download File</b> to start download to your PC.<br />
+- <b>Clear File</b>: Select the desired file in the dropdown list, then click <b>Clear File</b>. You will be prompted to confirm the clear action.
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;  </p>
+<h3 id="firmware-upgrade">Firmware Upgrade<a class="headerlink" href="#firmware-upgrade" title="Permanent link">~</a></h3>
+<p><img style="float:right;width:352px;height:208px" src="../img/p2m-fw-upgrade.jpg"></img>
+P2M supports OTA (over-the-air) firmware upgrades, this means that you can upload a new firmware file via a webpage,
+after which P2M will execute the new firmware when it boots.</p>
+<p>From <b>Main Menu</b> select <b>Firmware Upgrade</b> and follow below instructions.<br />
+- <b>Choose File</b>: Press this button to select a new firmware file that is stored on your PC.<br />
+- <b>Start Upgrade</b>: Press this button to start the upgrade, you will be prompted to confirm or cancel this operation.</p>
+<p>When confirmed the firmware file will be uploaded while showing a rotating caret/progress marker.</p>
+<p>After completion of the upload, you need to <a href="#reboot">reboot</a> P2M to let changes take effect.</p>
+<h3 id="web-console">Web Console<a class="headerlink" href="#web-console" title="Permanent link">~</a></h3>
+<p>The web console is the place where logging is shown and you can observe what P2M is doing in the big text window.</p>
+<p>The smaller window near the bottom is the command-line, you can enter commands here. Enter '?' and press &lt;enter&gt; to get a list of commands, you can also
+enter the commands as listed in <a href="#phc-cmd-reference">PHC Cmd Reference</a>.</p>
+<p align="center">
+<img src="../img/p2m-web-console.jpg" width="980" height="600"></td>
+</p>
+
+<h3 id="reboot">Reboot<a class="headerlink" href="#reboot" title="Permanent link">~</a></h3>
+<p>Clicking the <b style="color:red">Reboot</b> button will prompt you for confirmation, confirm or cancel at your will.</p>
+<p>When confirmed P2M will stop the different sub-systems in an orderly fashion and restart itself.</p>
+<p>After a few seconds the webpage will be redirected to P2M's homepage.</p>
+<h2 id="additional-info">Additional Info<a class="headerlink" href="#additional-info" title="Permanent link">~</a></h2>
+<h3 id="enumerating-module-channels">Enumerating Module Channels<a class="headerlink" href="#enumerating-module-channels" title="Permanent link">~</a></h3>
+<p>You can publish an MQTT message with topic '&lt;rx-topic-prefix&gt;/enu/chns' and in response P2M will publish all modules/channels that have
+a description specified in the Systemsoftware and which are valid for the respective module.</p>
+<p>An external system could use this info to learn about the PHC system and/or configure something like Home Assistant.</p>
+<div class="highlight"><pre><span></span><code>&lt;tx-topic-prefix&gt;/enu/&lt;mod&gt;.&lt;addr&gt; = &lt;description&gt;
+
+e.g. alias/p2m/enu/imd.0.in.0 = Living Shutter Up
+e.g. alias/p2m/enu/imd.0.in.1 = Living Shutter Down
+e.g. alias/p2m/enu/jrm.0.out0 = Living Shutter
+e.g. alias/p2m/enu/omd.0.out0 = Living Main Light
+</code></pre></div>
+<h3 id="web-console-commands">Web Console Commands<a class="headerlink" href="#web-console-commands" title="Permanent link">~</a></h3>
+<p>There are a number of commands you can specify in the command line of the Web Console, press '?' and &lt;enter&gt; to get a list. In addition to
+these commands you can also enter the commands listed in chapter 6.10.</p>
+<p>Note that the 'debug.*' and 'admin.save' commands should only be used based on instructions from support engineer,
+as these might induce high overhead on the functioning of P2M.</p>
+<p>Commands that you can use freely are listed below, you can use a space ' ' or a dot '.' as separator between words:
+<div class="highlight"><pre><span></span><code>info              return general info about P2M
+admin reboot      use this command to reboot P2M in an ordered way
+admin shutdown    use this command to stop P2M in an ordered way before power off
+debug             report current debug settings
+stats             report sub-system statistics
+stats reset       reset sub-system statistics
+mqtc              report MQTT client extra settings and statistics
+mqtc txque        set MQTT client tx-que size
+mqtc txbuf        set MQTT client tx-buffer size
+mqtc rxbuf        set MQTT client rx-buffer size
+srsd              report SRS daemon settings and statistics
+srsd state        report SRS deamon state variables
+</code></pre></div>
+.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.instant", "navigation.top", "navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

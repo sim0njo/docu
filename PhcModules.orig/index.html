@@ -1,0 +1,1085 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PHC Modules">
+      
+      
+      
+        <link rel="canonical" href="https://sim0njo.github.io/docs/PhcModules.orig/">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>PhcModules.orig - Jo Simons</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Barlow";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#intro" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Jo Simons" class="md-header__button md-logo" aria-label="Jo Simons" data-md-component="logo">
+      
+  <img src="../img/home.gif" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Jo Simons
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PhcModules.orig
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Phc2Mqtt/" class="md-tabs__link">
+          
+  
+  Phc2Mqtt
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Downloads/" class="md-tabs__link">
+        
+  
+    
+  
+  Downloads
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="http://sim0njo.github.io/install" class="md-tabs__link">
+        
+  
+    
+  
+  ESP Web Installer
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Jo Simons" class="md-nav__button md-logo" aria-label="Jo Simons" data-md-component="logo">
+      
+  <img src="../img/home.gif" alt="logo">
+
+    </a>
+    Jo Simons
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Phc2Mqtt
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Phc2Mqtt
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Phc2Mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Manual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PhcModules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phc Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SimpleRuleServer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple Rule Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Downloads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Downloads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="http://sim0njo.github.io/install" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP Web Installer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intro
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passivestmv3-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      PassiveSTMv3 Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Syntax
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module Templates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>PhcModules.orig</h1>
+
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">~</a></h2>
+<p>The PHC (PEHA Home Control) domotic system knows a fair amount of different modules, 
+each module:<br />
+- is identified by a physical module type (phy)<br />
+- communicates via a binary protocol<br />
+- has a specific amount/type of channels (input/output/feedback)<br />
+- belongs to a module class (input/multifunction/output/analog/box/dimmer)<br />
+- has a settable address via DIP switches (0-31)<br />
+- has a dedicated set of supported commands and generated responses</p>
+<p>Within a module class there are 32 adddresses (0-31) available, each module needs to be mapped
+to a unique address within it's class, otherwise conflicts will occur.
+Note that some modules use multiple addresses to cover it's functionality.</p>
+<p>Phc2Mqtt is the brigde between the module's binary protocol, and the textual interface with humans.
+As such Phc2Mqtt needs to know the physical module types to perform a correct communication with each module.
+On the human side it offers a textual command/response format that uses a logical module type (log).</p>
+<p>Following shows the relation between module class and logical module type:</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Logical Module Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input modules</td>
+<td>imd, imw, tab, et0</td>
+</tr>
+<tr>
+<td>Multifunction modules</td>
+<td>utm, bwm, uim, et1, mcc</td>
+</tr>
+<tr>
+<td>Output modules</td>
+<td>omd, omx, jrm</td>
+</tr>
+<tr>
+<td>Analog modules</td>
+<td>amd, fui, fu1, fu2</td>
+</tr>
+<tr>
+<td>Box modules</td>
+<td>ebs, ebr, ebd, mls</td>
+</tr>
+<tr>
+<td>Dimmer modules</td>
+<td>dim, dal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="project-information">Project Information<a class="headerlink" href="#project-information" title="Permanent link">~</a></h2>
+<p>The information needed by Phc2Mqtt is all put together in the project information file (i.e. project.stm).</p>
+<h3 id="proxy-mode">Proxy Mode<a class="headerlink" href="#proxy-mode" title="Permanent link">~</a></h3>
+<p>When running Phc2Mqtt in Proxy mode it will passively listen on the PHC module bus to report activity
+and send commands to the real STM that will handle protocol details for communication with the PHC modules.</p>
+<p>In this mode Phc2Mqtt needs following information per module:<br />
+- physical module type<br />
+- module address setting</p>
+<h3 id="passivestmv3-mode">PassiveSTMv3 Mode<a class="headerlink" href="#passivestmv3-mode" title="Permanent link">~</a></h3>
+<p>When running Phc2Mqtt in PassiveSTMv3 mode the module list is required but not enough.</p>
+<p>In this mode Phc2Mqtt takes over the role of the STM and it needs additional information, this requires some explanation:<br />
+- The PHC module bus is slow (19200 baud) and shared by all modules<br />
+- The binary protocol tries to reduce the number of packets sent over it to avoid contention<br />
+- When a PHC module starts it will do only 1 thing: send a boot packet to it's master (STM)<br />
+- The STM responds with a config packet, now the module knows which events to report to STM<br />
+- After that the PHC module will report the enabled events to STM</p>
+<p>The additional information for each input (in/ir/il/im) and feedback (fb) channel of the module is:<br />
+- Channel identification<br />
+- Optional a descriptive text for this channel<br />
+- A list of all events enabled for this channel</p>
+<p>Output channels (mrk/led/out) can optionally specify following info:<br />
+- Channel identification<br />
+- Optional a descriptive text for this channel  </p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">~</a></h2>
+<p>The module and optional channel/event list can be provided in several ways:<br />
+- by uploading the project definition from the System Software v3 to Phc2Mqtt via the management interface<br />
+- by extracting project.ppfx from the project.zpfx file and then uploading it manual</p>
+<p>In future we will obsolete both these methods and replace it with a full manual solution, this may sound strange but it will 
+allow for a lot of functionality on the module to be removed and a significant reduction is required memory (64Kb Flash + 64Kb RAM).</p>
+<p>To provide the manual configuration you will need to prepare a text file with below syntax and then upload it to Phc2Mqtt.
+To avoid typing errors we will make use of prepared template files per module type that can be copy/pasted with minor adjustements.</p>
+<p>For Proxy mode you need to copy the module definition, for PassiveSTMv3 mode you need to copy the module and channel definitions.</p>
+<h3 id="configuration-syntax">Configuration Syntax<a class="headerlink" href="#configuration-syntax" title="Permanent link">~</a></h3>
+<p>Configuration info can span 1 or more lines but the last line always ends on a semicolon (;).</p>
+<p>Each line in the configuration carries 1 functional block as shown in the Backus-Naur format below, the split over lines is intentional and strict.</p>
+<p>A space character is used to separate fields and can thus not be used as data.</p>
+<p>If you want to use a space character in a string, then the complete string needs to be enclosed in double quotes.</p>
+<p>Keywords and delimiters (between double quotes) are case-insensitive, actual data strings are case-sensitive.</p>
+<div class="highlight"><pre><span></span><code>config         ::= &quot;&lt;stmd&gt;&quot;
+                   *[&lt;module&gt; | &lt;comment&gt;]
+                   &quot;&lt;/stmd&gt;&quot;
+
+comment        ::= &quot;;&quot; [&lt;string&gt;]
+
+module         ::= &quot;module&quot; &quot;id=&quot;&lt;phy-mod&gt;.&lt;address&gt;
+                     *(&quot;channel&quot; &lt;channel&gt;) &quot;;&quot;
+
+  phy-mod      ::= physical module name
+  address      ::= 0-31
+
+channel        ::= &quot;id=&quot;&lt;id&gt; &quot;desc=&quot;&lt;string&gt; [&quot;events=&quot;&lt;event&gt; *[&quot;,&quot;&lt;event&gt;]
+  id           ::= &lt;chn-type&gt;&lt;chn-num&gt;
+  chn-type     ::= &quot;in&quot; | &quot;ir&quot; | &quot;il&quot; | &quot;im&quot; | &quot;mrk&quot; | &quot;led&quot; | &quot;out&quot; | &quot;fb&quot;
+  chn-num      ::= 0-31
+  event        ::= &lt;string&gt;
+
+string         ::= *(&quot;a-z&quot; | &quot;A-Z&quot; | &quot;0-9&quot; | &quot;_-/.,&quot;&#39;:;{}&quot;)
+</code></pre></div>
+<h3 id="module-templates">Module Templates<a class="headerlink" href="#module-templates" title="Permanent link">~</a></h3>
+<p>Building the configuration file from scratch is a difficult task, therefore we created templates for each physical module type.</p>
+<p>Below table lists all modules, their physical and logical module types, their image and manual and the corresponding template file.</p>
+<p>Copy the template for each module you have into your config.stm file and make adjustments:<br />
+- adjust the <addr> of the module<br />
+- put all not used channels in comment<br />
+- optional adjust the desc field of each channel
+- for the input/feedback channels:<br />
+  - remove the non used events from the event-list<br />
+  - for light control we typiclly retain: outlt1 and ingt2<br />
+  - for shutter control we typically retain: ingt0 and ingt1</p>
+<table>
+<thead>
+<tr>
+<th>Phy(Template)</th>
+<th>Log</th>
+<th>PHC product</th>
+<th>Description/Module definition</th>
+<th>Image(Manual)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../phc/emd24/">EMD24</a></td>
+<td>imd</td>
+<td>940/24EM</td>
+<td>Input module 24 V</td>
+<td><a href="../phc/EMD24.pdf"><img style="float:right;width:100px;height:100px" src="../phc/EMD24.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/emd_rue/">EMD_RUE</a></td>
+<td>imd</td>
+<td>940/24EM RU<br/>940/24EM RU diag</td>
+<td>Input module 24 V LED</td>
+<td><a href="../phc/EMD_RUE.pdf"><img style="float:right;width:100px;height:100px" src="../phc/EMD_RUE.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/emd_24s/">EMD_24S</a></td>
+<td>imd</td>
+<td>941/24 EM</td>
+<td>Input module 24 V switch</td>
+<td><a href="../phc/EMD_24S.pdf"><img style="float:right;width:100px;height:100px" src="../phc/EMD_24S.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/emd230/">EMD230</a></td>
+<td>imd</td>
+<td>940/230 EM</td>
+<td>Input module 230 V</td>
+<td><a href="../phc/EMD230.pdf"><img style="float:right;width:100px;height:100px" src="../phc/EMD230.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/uem_1/">UEM_1</a></td>
+<td>imw</td>
+<td>940/24 EM UP o.T.</td>
+<td>Flush mount input module 24 V DC</td>
+<td><a href="../phc/UEM_1.pdf"><img style="float:right;width:100px;height:100px" src="../phc/UEM_1.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/uem_2/">UEM_2</a></td>
+<td>imw</td>
+<td>940/24 EM RU o.T.</td>
+<td>Flush mount input module with LED</td>
+<td><a href="../phc/UEM_2.pdf"><img style="float:right;width:100px;height:100px" src="../phc/UEM_2.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/uem_2/">UEM_2</a></td>
+<td>imw</td>
+<td>OpenHC UEM</td>
+<td>Flush mount input module with LED</td>
+<td><a href="../phc/UEM.jpg"><img style="float:right;width:100px;height:100px" src="../phc/UEM.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/et0-2/">ET0-2</a></td>
+<td>et0</td>
+<td>940/2.xx ET(B)</td>
+<td>Flush mount push button 2 fold</td>
+<td><a href="../phc/ET0-8.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ET0-2.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/et0-4/">ET0-4</a></td>
+<td>et0</td>
+<td>940/4.xx ET(B)</td>
+<td>Flush mount push button 4 fold</td>
+<td><a href="../phc/ET0-8.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ET0-4.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/et0-8/">ET0-8</a></td>
+<td>et0</td>
+<td>940/8.xx ET(B)</td>
+<td>Flush mount push button 8 fold</td>
+<td><a href="../phc/ET0-8.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ET0-8.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/et0-d/">ET0-D</a></td>
+<td>et0</td>
+<td>940/8.xx ET D</td>
+<td>Flush mount push button 8 fold with display</td>
+<td><a href="../phc/ET0-D.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ET0-D.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/emd_tab/">EMD_TAB</a></td>
+<td>tab</td>
+<td>941/16 TAB</td>
+<td>Indicator- and control panel  (16 push buttons)</td>
+<td><a href="../phc/EMD_TAB.pdf"><img style="float:right;width:100px;height:100px" src="../phc/EMD_TAB.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/emd_tab_2/">EMD_TAB_2</a></td>
+<td>tab</td>
+<td>941/32 TAB</td>
+<td>Indicator- and control panel  (32 push buttons)</td>
+<td><a href="../phc/EMD_TAB.pdf"><img style="float:right;width:100px;height:100px" src="../phc/EMD_TAB_2.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/emd_vir/">EMD_VIR</a></td>
+<td>imd</td>
+<td>-</td>
+<td>Virtual input module</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="../phc/utm_1/">UTM_1.0</a></td>
+<td>utm</td>
+<td>941/1 UP o.A</td>
+<td>Push button, 1-fold</td>
+<td><a href="../phc/uim.pdf"><img style="float:right;width:100px;height:100px" src="../phc/UTM_1.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/utm_2/">UTM_2.1</a></td>
+<td>utm</td>
+<td>941/2 UP o.A</td>
+<td>Push button, 2-fold</td>
+<td><a href="../phc/uim.pdf"><img style="float:right;width:100px;height:100px" src="../phc/UTM_2.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/utm_3/">UTM_3.2</a></td>
+<td>utm</td>
+<td>941/4 UP o.A</td>
+<td>Push button, 4-fold</td>
+<td><a href="../phc/uim.pdf"><img style="float:right;width:100px;height:100px" src="../phc/UTM_3.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/mfm_bwm/">MFM_BWM</a></td>
+<td>bwm</td>
+<td>410 BM o.A</td>
+<td>Flush - mounting motion detector 180degr</td>
+<td><a href="../phc/MFM_BWM.PNG"><img style="float:right;width:100px;height:100px" src="../phc/MFM_BWM.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/uim/">UIM</a></td>
+<td>uim</td>
+<td>941 UP o.A</td>
+<td>Infrared module</td>
+<td><a href="../phc/uim.pdf"><img style="float:right;width:100px;height:100px" src="../phc/UIM.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/et1-2/">ET1-2</a></td>
+<td>et1</td>
+<td>940/2.xx ET(B)</td>
+<td>Flush mounting push button 2 fold</td>
+<td><a href="../phc/ET0-8.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ET1-2.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/et1-4/">ET1-4</a></td>
+<td>et1</td>
+<td>940/4.xx ET(B)</td>
+<td>Flush mounting push button 4 fold</td>
+<td><a href="../phc/ET0-8.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ET1-4.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/et1-8/">ET1-8</a></td>
+<td>et1</td>
+<td>940/8.xx ET(B)</td>
+<td>Flush mounting push button 8 fold</td>
+<td><a href="../phc/ET0-8.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ET1-8.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/et1-d/">ET1-D</a></td>
+<td>et1</td>
+<td>940/8.xx ET D</td>
+<td>Flush mounting push button 8 fold with display</td>
+<td><a href="../phc/ET0-D.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ET1-D.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/mcc_2/">MCC_2</a></td>
+<td>mcc</td>
+<td>940 MCC</td>
+<td>Multi Control Center (MCC)</td>
+<td><a href="../phc/MCC_2.pdf"><img style="float:right;width:100px;height:100px" src="../phc/MCC_2.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/amd230_4/">AMD230_4</a></td>
+<td>omd</td>
+<td>940/4 AM<br/>940/4 AM diag</td>
+<td>Output module 230V/4A</td>
+<td><a href="../phc/AMD230_4.pdf"><img style="float:right;width:100px;height:100px" src="../phc/AMD230_4.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/amd230_10/">AMD230_10</a></td>
+<td>omd</td>
+<td>940/10 AM<br/>940/10 AM diag</td>
+<td>Output module 230V/10A</td>
+<td><a href="../phc/AMD230_10.pdf"><img style="float:right;width:100px;height:100px" src="../phc/AMD230_10.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/amd230_16/">AMD230_16</a></td>
+<td>omd</td>
+<td>940/16 AM</td>
+<td>Output module 230V/16A</td>
+<td><a href="../phc/AMD230_16.pdf"><img style="float:right;width:100px;height:100px" src="../phc/AMD230_16.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/alp/">ALP</a></td>
+<td>omd</td>
+<td>940/24 AM</td>
+<td>Output module 24V</td>
+<td><a href="../phc/ALP.pdf"><img style="float:right;width:100px;height:100px" src="../phc/ALP.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/amd_evg/">AMD_EVG</a></td>
+<td>omd</td>
+<td>941/10 AM</td>
+<td>Output module 230V/EVG</td>
+<td><a href="../phc/AMD_EVG.pdf"><img style="float:right;width:100px;height:100px" src="../phc/AMD_EVG.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="phc/AMD230_4_MAN_EXT.md">AMD230_4_man_ext</a></td>
+<td>omx</td>
+<td>942/4 AM<br/>942/4 AM diag</td>
+<td>Output module 230V/4A diag</td>
+<td><a href="../phc/AMD230_4_MAN_EXT.pdf"><img style="float:right;width:100px;height:100px" src="../phc/AMD230_4_MAN_EXT.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="phc/AMD230_10_MAN_EXT.md">AMD230_10_man_ext</a></td>
+<td>omx</td>
+<td>942/10 AM<br/>942/10 AM diag</td>
+<td>Output module 230V/10A diag</td>
+<td><a href="../phc/AMD230_10_MAN_EXT.pdf"><img style="float:right;width:100px;height:100px" src="../phc/AMD230_10_MAN_EXT.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="phc/AMD230_16_MAN_EXT.md">AMD230_16_man_ext</a></td>
+<td>omx</td>
+<td>940/16 AM MAN</td>
+<td>Output module 230V/16A manual</td>
+<td><a href="../phc/AMD230_16_MAN_EXT.pdf"><img style="float:right;width:100px;height:100px" src="../phc/AMD230_16_MAN_EXT.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/jrm24/">JRM24</a></td>
+<td>jrm</td>
+<td>940/24 JRM</td>
+<td>Shutter/ blind module 24V</td>
+<td><a href="../phc/JRM24.pdf"><img style="float:right;width:100px;height:100px" src="../phc/JRM24.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/jrm/">JRM</a></td>
+<td>jrm</td>
+<td>940 JRM<br/> 940 JRM DIAG</td>
+<td>Shutter/ blind module 230V</td>
+<td><a href="../phc/JRM.pdf"><img style="float:right;width:100px;height:100px" src="../phc/JRM.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="">AMA(phc/ama.md)</a></td>
+<td>amd</td>
+<td>940 AMA</td>
+<td>Analogue module</td>
+<td><a href="../phc/AMA.pdf"><img style="float:right;width:100px;height:100px" src="../phc/AMA.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/mfm_funk/">MFM_FUNK</a></td>
+<td>fui</td>
+<td>940 FU C</td>
+<td>RF- interface (Easyclick)</td>
+<td><a href="../phc/MFM_FUNK.pdf"><img style="float:right;width:100px;height:100px" src="../phc/MFM_FUNK.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/mfm_funk1/">MFM_FUNK1</a></td>
+<td>fu1</td>
+<td>940 FU</td>
+<td>RF- interface I/O (Easywave)</td>
+<td><a href="../phc/MFM_FUNK1.pdf"><img style="float:right;width:100px;height:100px" src="../phc/MFM_FUNK1.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/mfm_funk2/">MFM_FUNK2</a></td>
+<td>fu2</td>
+<td>941 FU C</td>
+<td>RF- interface I/O (Easyclick)</td>
+<td><a href="../phc/MFM_FUNK2.pdf"><img style="float:right;width:100px;height:100px" src="../phc/MFM_FUNK2.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/obo_1/">OBO_1</a></td>
+<td>ebs</td>
+<td>960/3 PSB</td>
+<td>System box switching</td>
+<td><a href="../phc/AMD_BUSBOX_S.pdf"><img style="float:right;width:100px;height:100px" src="../phc/OBO_1.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/obo_2/">OBO_2</a></td>
+<td>ebr</td>
+<td>960/3 PSB/JR</td>
+<td>System box shutter</td>
+<td><a href="../phc/AMD_BUSBOX_R.pdf"><img style="float:right;width:100px;height:100px" src="../phc/OBO_2.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/obo_3/">OBO_3</a></td>
+<td>ebd</td>
+<td>960/3 PSB/D</td>
+<td>System box dimming (1-10V)</td>
+<td><a href="../phc/OBO_3.pdf"><img style="float:right;width:100px;height:100px" src="../phc/OBO_3.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/dim_an/">DIM_AN</a></td>
+<td>dim</td>
+<td>944/2 DIM AN</td>
+<td>Forward phase control dimmer 420W</td>
+<td><a href="../phc/DIM_AN.pdf"><img style="float:right;width:100px;height:100px" src="../phc/DIM_AN.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/dim_ab/">DIM_AB</a></td>
+<td>dim</td>
+<td>944/2 DIM AB</td>
+<td>Inverse phase control dimmer 420W</td>
+<td><a href="../phc/DIM_AB.pdf"><img style="float:right;width:100px;height:100px" src="../phc/DIM_AB.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/dim_an1000/">DIM_AN1000</a></td>
+<td>dim</td>
+<td>949 DM M-AN</td>
+<td>Forward phase control dimmer 1000W</td>
+<td><a href="../phc/DIM_AN1000.pdf"><img style="float:right;width:100px;height:100px" src="../phc/DIM_AN1000.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/dim_ab1000/">DIM_AB1000</a></td>
+<td>dim</td>
+<td>949 DM M-AB</td>
+<td>Inverse phase control dimmer 1000W</td>
+<td><a href="../phc/DIM_AB1000.pdf"><img style="float:right;width:100px;height:100px" src="../phc/DIM_AB1000.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/dim_san/">DIM_SAN</a></td>
+<td>dim</td>
+<td>944/2 DM AN<br/>949 DM M-AN</td>
+<td>Synchronized forward phase control dimmer</td>
+<td><a href="../phc/DIM_SAN.pdf"><img style="float:right;width:100px;height:100px" src="../phc/DIM_SAN.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/dim_sab/">DIM_SAB</a></td>
+<td>dim</td>
+<td>944/2 DM AB<br/>949 DM M-AB</td>
+<td>Synchronized inverse phase control dimmer</td>
+<td><a href="../phc/DIM_SAB.pdf"><img style="float:right;width:100px;height:100px" src="../phc/DIM_SAB.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/dim_uni/">DIM_UNI</a></td>
+<td>dim</td>
+<td>949 DM UN</td>
+<td>Universal dimmer</td>
+<td><a href="../phc/DIM_UNI.pdf"><img style="float:right;width:100px;height:100px" src="../phc/DIM_UNI.PNG"></img></a></td>
+</tr>
+<tr>
+<td><a href="../phc/dim_dali_8_ext/">DIM_DALI_8_EXT</a></td>
+<td>dal</td>
+<td>940/8 DALI-G</td>
+<td>DALI-Gateway (8-channels)</td>
+<td><a href="../phc/DIM_DALI_8.pdf"><img style="float:right;width:100px;height:100px" src="../phc/DIM_DALI_8_EXT.PNG"></img></a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.instant", "navigation.top", "navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
